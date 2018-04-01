@@ -1,0 +1,4 @@
+Install-Package:
+
+Rework
+Newtonsoft.Json

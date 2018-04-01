@@ -1,0 +1,62 @@
+﻿{
+  "language": "zh-tw",
+  "version": "1.0",
+  "login": {
+    "title": "登入",
+    "enter-password": "輸入密碼:",
+    "confirm": "確認",
+    "reset-password": "重設密碼",
+    "login-error": "密碼錯誤"
+  },
+  "workspace": {
+    "title": "加密記事本",
+    "untitle": "未命名",
+    "file": {
+      "index": "檔案",
+      "new-file": "開新檔案",
+      "open-file": "開啟舊檔",
+      "save-file": "儲存檔案",
+      "save-new-file": "另存新檔",
+      "encrypt": "加密儲存",
+      "decrypt": "解密開啟"
+    },
+    "text": {
+      "index": "內文",
+      "font": "字型",
+      "color": "顏色",
+      "auto-NL": "自動換行",
+      "time": "時間戳記p",
+      "copy": "複製",
+      "paste": "貼上",
+      "select-all": "全選",
+      "clean": "清除"
+    },
+    "lock": {
+      "index": "鎖定"
+    },
+    "exit": {
+      "index": "離開"
+    },
+    "setting": {
+      "index": "設定",
+      "language": "更改語言"
+    },
+    "about": {
+      "index": "關於"
+    }
+  },
+  "setup": {
+    "password-error": "密碼錯誤",
+    "enter-old-password": "請輸入舊密碼",
+    "enter-new-password": "請輸入新密碼",
+    "enter-new-password2": "重複輸入新登入密碼",
+    "password-cant-empty": "新登入密碼不可為空",
+    "check-new-password": "驗證新登入密碼",
+    "new-password-check-fail": "新登入密碼驗證失敗",
+    "success": "登入密碼重設成功"
+  },
+  "author": "oxygen-studio 劉子豪",
+  "software-CopyRight": "Copyright (C) 2017, 劉子豪 All rights reserved",
+  "translater": "劉子豪",
+  "translate-CopyRight": "MIT License"
+}

@@ -1,0 +1,62 @@
+﻿{
+  "language": "zn-cn",
+  "version": "1.0",
+  "login": {
+    "title": "登入",
+    "enter-password": "输入密码:",
+    "confirm": "确认",
+    "reset-password": "重设密码",
+    "login-error": "密码错误"
+  },
+  "workspace": {
+    "title": "加密记事本",
+    "untitle": "未命名",
+    "file": {
+      "index": "档案",
+      "new-file": "开新档案",
+      "open-file": "开启旧档",
+      "save-file": "储存档案",
+      "save-new-file": "另存新档",
+      "encrypt": "加密储存",
+      "decrypt": "解密开启"
+    },
+    "text": {
+      "index": "内文",
+      "font": "字型",
+      "color": "颜色",
+      "auto-NL": "自动换行",
+      "time": "时间戳记",
+      "copy": "複製",
+      "paste": "贴上",
+      "select-all": "全选",
+      "clean": "清除"
+    },
+    "lock": {
+      "index": "锁定"
+    },
+    "exit": {
+      "index": "离开"
+    },
+    "setting": {
+      "index": "设定",
+      "language": "更改语言"
+    },
+    "about": {
+      "index": "关于"
+    }
+  },
+  "setup": {
+    "password-error": "密码错误",
+    "enter-old-password": "请输入旧密码",
+    "enter-new-password": "请输入新密码",
+    "enter-new-password2": "重複输入新登入密码",
+    "password-cant-empty": "新登入密码不可为空",
+    "check-new-password": "验证新登入密码",
+    "new-password-check-fail": "新登入密码验证失败",
+    "success": "登入密码重设成功"
+  },
+  "author": "oxygen-studio 刘子豪",
+  "software-CopyRight": "Copyright (C) 2017, 刘子豪 All rights reserved",
+  "translater": "刘子豪",
+  "translate-CopyRight": "MIT License"
+}
