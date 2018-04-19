@@ -201,7 +201,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v3.0.0.0 Pre-Alpha{vbNewLine}編譯日期 2018/2/18{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, 劉子豪{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v3.0.1.3 Pre-Alpha{vbNewLine}編譯日期 2018/4/19{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, 劉子豪{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 

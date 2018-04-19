@@ -42,7 +42,21 @@ Module language_tools
         End If
     End Sub
 
+    Sub Init_Language_Menu()
+
+        Dim LanguageList As String
+        LanguageList = My.Computer.FileSystem.ReadAllText(LanguageFile + "Language.list",
+        encoding:=Text.Encoding.UTF8)
+
+        '建立已安裝語言檔JSON物件
+        Dim List As JObject = JsonConvert.DeserializeObject(LanguageList)
+
+        'WorkSpace.語言.Items.Add(New MyListItem("Text to be displayed", "value of the item"))
+    End Sub
     Sub Init_Language(ByVal JsonData As JObject)
+        '初始化語言選單(未完成)
+        'Call Init_Language_Menu()
+
         '參數儲存進變數
         Current_Language = JsonData.Item("language").ToString
 
