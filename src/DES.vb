@@ -2,8 +2,8 @@
 '原作者:未知
 '2003-07-12
 '-----------------------------
-'Encryption Notepad v.3.0.0.0 Pre-Alpha
-'Copyright(C) 2017, 劉子豪
+'Encryption Notepad v.3.0.1.4 Alpha
+'Copyright(C) 2017-2018, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------

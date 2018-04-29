@@ -54,6 +54,7 @@ Partial Class WorkSpace
         Me.繁體中文ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.简体中文ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.英文ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EspañolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.錯誤回報BetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.關於ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
@@ -62,7 +63,6 @@ Partial Class WorkSpace
         Me.DESOpenFile = New System.Windows.Forms.OpenFileDialog()
         Me.DESSaveFile = New System.Windows.Forms.SaveFileDialog()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.EspañolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,7 +98,7 @@ Partial Class WorkSpace
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(10, 3, 0, 3)
-        Me.MenuStrip1.Size = New System.Drawing.Size(753, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(753, 30)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -107,7 +107,7 @@ Partial Class WorkSpace
         Me.檔案ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.開新檔案ToolStripMenuItem, Me.開啟舊檔ToolStripMenuItem, Me.儲存檔案ToolStripMenuItem, Me.另存新檔ToolStripMenuItem, Me.ToolStripSeparator1, Me.加密儲存ToolStripMenuItem, Me.解密開啟ToolStripMenuItem})
         Me.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem"
         Me.檔案ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.檔案ToolStripMenuItem.Text = "檔案"
         '
         '開新檔案ToolStripMenuItem
@@ -161,7 +161,7 @@ Partial Class WorkSpace
         '
         Me.內文ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.字型ToolStripMenuItem, Me.顏色ToolStripMenuItem, Me.ToolStripSeparator3, Me.自動換行ToolStripMenuItem, Me.時間戳記ToolStripMenuItem, Me.ToolStripSeparator4, Me.複製ToolStripMenuItem, Me.貼上ToolStripMenuItem, Me.全選ToolStripMenuItem, Me.清除ToolStripMenuItem})
         Me.內文ToolStripMenuItem.Name = "內文ToolStripMenuItem"
-        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.內文ToolStripMenuItem.Text = "內文"
         '
         '字型ToolStripMenuItem
@@ -234,21 +234,21 @@ Partial Class WorkSpace
         '
         Me.鎖定ToolStripMenuItem.Name = "鎖定ToolStripMenuItem"
         Me.鎖定ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.鎖定ToolStripMenuItem.Text = "鎖定"
         '
         '離開ToolStripMenuItem
         '
         Me.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem"
         Me.離開ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.離開ToolStripMenuItem.Text = "離開"
         '
         '設定ToolStripMenuItem
         '
         Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.語言ToolStripMenuItem, Me.錯誤回報BetaToolStripMenuItem})
         Me.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem"
-        Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.設定ToolStripMenuItem.Text = "設定"
         '
         '語言ToolStripMenuItem
@@ -276,6 +276,12 @@ Partial Class WorkSpace
         Me.英文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.英文ToolStripMenuItem.Text = "English"
         '
+        'EspañolToolStripMenuItem
+        '
+        Me.EspañolToolStripMenuItem.Name = "EspañolToolStripMenuItem"
+        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.EspañolToolStripMenuItem.Text = "Español"
+        '
         '錯誤回報BetaToolStripMenuItem
         '
         Me.錯誤回報BetaToolStripMenuItem.Name = "錯誤回報BetaToolStripMenuItem"
@@ -285,7 +291,7 @@ Partial Class WorkSpace
         '關於ToolStripMenuItem
         '
         Me.關於ToolStripMenuItem.Name = "關於ToolStripMenuItem"
-        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.關於ToolStripMenuItem.Text = "關於"
         '
         'PrintDialog1
@@ -315,12 +321,6 @@ Partial Class WorkSpace
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Label1"
         Me.Label1.Visible = False
-        '
-        'EspañolToolStripMenuItem
-        '
-        Me.EspañolToolStripMenuItem.Name = "EspañolToolStripMenuItem"
-        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.EspañolToolStripMenuItem.Text = "Español"
         '
         'WorkSpace
         '
