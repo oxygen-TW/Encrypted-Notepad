@@ -1,8 +1,10 @@
 # Encrypted-Notepad
 
-加密記事本專案
+**加密記事本專案**
 <br/>
-Encrypted-Notepad Project 2017-2018
+**Encrypted-Notepad Project 2017-2018**
+
+![image](https://oxygentw.net/wp-files/logo/logo-resize.png)
 
 ## How to download?
 - Visit our website: https://encryptednotepad.oxygentw.net/
