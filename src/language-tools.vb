@@ -32,10 +32,17 @@ Module language_tools
         Return default_Language
     End Function
 
+    Sub ChangeDefaultLanguage(ByVal language)
+        FileOpen(3, LanguageFile + "default", OpenMode.Output)
+        WriteLine(3, language)
+        FileClose(3)
+    End Sub
+
     Sub ChangeLanguage(ByVal language)
         If language <> Current_Language Then
             Try
                 Init_Language(ReadLanguageConfig(language))
+                ChangeDefaultLanguage(language)
             Catch ex As Exception
                 MessageBox.Show("語言檔讀取錯誤", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
