@@ -1,11 +1,15 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.0.0 Pre-Alpha
+'Encryption Notepad v.3.0.1.6 Pre-Alpha
 'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
 
 Public Class login
+
+    ''' 重要! 版本號定義常數 '''
+    Public Const Version = "3.0.1.6"
+
     Dim password As String = "0000"
     Dim Old_pwd As String = Nothing
     Dim New_pwd As String = Nothing
@@ -57,6 +61,27 @@ Public Class login
         If Not GetCheckKeyFile() Then
             Dim result = GetNewKey()
             If result = 1 Then Application.Exit()
+        End If
+
+        '導入更新服務伺服器位置 Base64處理
+        Dim UpdateInfoBase64 As String = Nothing
+        FileOpen(4, "UpdateInfo.ini", OpenMode.Input)
+        Input(4, UpdateInfoBase64)
+        FileClose(4)
+
+        Dim UpdateInfo As String = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(UpdateInfoBase64))
+
+        'MsgBox(UpdateInfo)
+
+        Dim IsUpdate = CheckUpdate(UpdateInfo)
+
+        If IsUpdate <> "0" Then
+            Dim r = MessageBox.Show("加密記事本 v" + IsUpdate + "已經釋出，是否更新成最新版?", "有更新版本", MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
+
+            If r = DialogResult.OK Then
+                '打開加密記事本官網
+                Shell("Rundll32.exe url.dll, FileProtocolHandler " & UpdateInfo, vbNormalFocus)
+            End If
         End If
     End Sub
 

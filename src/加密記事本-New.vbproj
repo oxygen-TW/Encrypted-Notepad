@@ -30,7 +30,7 @@
     <SuiteName>Encryption Notepad</SuiteName>
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>3.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -215,6 +215,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
+    <Content Include="UpdateInfo.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="加密記事本-New_1_TemporaryKey.pfx" />
     <None Include="加密記事本-New_TemporaryKey.pfx" />
   </ItemGroup>

@@ -47,5 +47,19 @@ Module ProgramTool
         FileClose(1)
     End Sub
 
+    Function CheckUpdate(ByVal UpdateServerURL)
+        Dim webClient As New System.Net.WebClient
+        Dim VersionFromServer As String = Nothing
 
+        Try
+            VersionFromServer = webClient.DownloadString(UpdateServerURL + "/CurrentVersion")
+        Catch ex As Exception
+        End Try
+
+        If login.Version = VersionFromServer Then
+            Return "0"
+        Else
+            Return VersionFromServer
+        End If
+    End Function
 End Module
