@@ -1,5 +1,5 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.0.0 Pre-Alpha
+'Encryption Notepad v.3.0.1.7 Pre-Alpha
 'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
@@ -56,7 +56,9 @@ Module ProgramTool
         Catch ex As Exception
         End Try
 
-        If login.Version = VersionFromServer Then
+        'MsgBox(VersionFromServer)
+
+        If login.Version & vbLf = VersionFromServer Then
             Return "0"
         Else
             Return VersionFromServer

@@ -70,10 +70,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>ED13CF4F8FF5A16EBA66AF75A328D6607670730F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>54A82DF653D999D7947938F95607BD08E59D265C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>加密記事本-New_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>加密記事本-New_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -219,6 +219,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="加密記事本-New_1_TemporaryKey.pfx" />
+    <None Include="加密記事本-New_2_TemporaryKey.pfx" />
     <None Include="加密記事本-New_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

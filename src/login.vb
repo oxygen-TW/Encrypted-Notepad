@@ -1,5 +1,5 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.1.6 Pre-Alpha
+'Encryption Notepad v.3.0.1.7 Pre-Alpha
 'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
@@ -8,7 +8,7 @@
 Public Class login
 
     ''' 重要! 版本號定義常數 '''
-    Public Const Version = "3.0.1.6"
+    Public Const Version = "3.0.1.7"
 
     Dim password As String = "0000"
     Dim Old_pwd As String = Nothing
