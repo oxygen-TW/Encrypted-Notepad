@@ -19,7 +19,7 @@
 6. Enjoy it!
 
 ## Structure of Encryption core
-![image](http://encryptednotepad.oxygentw.net/images/github/Cross-Encryption-core-v2.0.png)
+![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
 ## Update
 1. Update ```Encrypted Core``` to v2.0.
