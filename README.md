@@ -19,7 +19,13 @@
 6. Enjoy it!
 
 ## Structure of Encryption core
-![image](http://encryptednotepad.oxygentw.net/images/github/Cross-Encryption-core%20v1.0.png)
+![image](http://encryptednotepad.oxygentw.net/images/github/Cross-Encryption-core-v2.0.png)
+
+## Update
+1. Update ```Encrypted Core``` to v2.0.
+2. Convert Application to UWP App.
+3. Add encrypt all types of file feature.
+4. Remove suck update checker.
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
