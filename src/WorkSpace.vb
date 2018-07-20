@@ -1,9 +1,10 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.1.4 Alpha
-'Copyright(C) 2017-2018, 劉子豪
+'Encryption Notepad v.3.1.0.0 Alpha
+'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
+
 
 Public Class WorkSpace
     Dim ChkFileName = Nothing
@@ -37,7 +38,7 @@ Public Class WorkSpace
             result = MessageBox.Show("是否存儲存修改?", "存檔?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk)
 
             If result = DialogResult.Yes Then
-                If Not SaveFileFuntion(ChkFileName) Then
+                If Not SaveFileFunction(ChkFileName) Then
                     Exit Sub
                 End If
 
@@ -60,13 +61,13 @@ Public Class WorkSpace
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 儲存檔案ToolStripMenuItem.Click
-        Call SaveFileFuntion(ChkFileName)
+        Call SaveFileFunction(ChkFileName)
         Call SetTitle(ChkFileName)
         TextModify = False
     End Sub
 
     Private Sub SaveNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 另存新檔ToolStripMenuItem.Click
-        Call SaveNewFileFuntion(ChkFileName)
+        Call SaveNewFileFunction(ChkFileName)
         Call SetTitle(ChkFileName)
         TextModify = True
     End Sub
@@ -78,7 +79,7 @@ Public Class WorkSpace
             result = MessageBox.Show("即將離開程式，是否存儲存修改?", "存檔?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk)
 
             If result = DialogResult.Yes Then
-                If Not SaveFileFuntion(ChkFileName) Then
+                If Not SaveFileFunction(ChkFileName) Then
                     'Exit Sub
                 End If
 
@@ -111,7 +112,7 @@ Public Class WorkSpace
 
     Private Sub LockToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 鎖定ToolStripMenuItem.Click
         Me.Hide()
-        Login.Show()
+        login.Show()
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 離開ToolStripMenuItem.Click
@@ -121,7 +122,7 @@ Public Class WorkSpace
             result = MessageBox.Show("即將離開程式，是否存儲存修改?", "存檔?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk)
 
             If result = DialogResult.Yes Then
-                If Not SaveFileFuntion(ChkFileName) Then
+                If Not SaveFileFunction(ChkFileName) Then
                     Exit Sub
                 End If
                 Application.Exit()
@@ -139,7 +140,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub DES_SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 加密儲存ToolStripMenuItem.Click
-        Call Encrypt_SaveFileFuntion(ChkFileName)
+        Call Encrypt_SaveFileFunction(ChkFileName)
         Call SetTitle(ChkFileName)
         TextModify = False
     End Sub
@@ -150,22 +151,22 @@ Public Class WorkSpace
             result = MessageBox.Show("是否存儲存修改?", "存檔?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk)
 
             If result = DialogResult.Yes Then
-                If Not SaveFileFuntion(ChkFileName) Then
+                If Not SaveFileFunction(ChkFileName) Then
                     Exit Sub
                 End If
 
-                Call Decrypt_OpenFileFuntion(ChkFileName)
+                Call Decrypt_OpenFileFunction(ChkFileName)
                 Call SetTitle(ChkFileName)
 
             ElseIf result = DialogResult.No Then
-                Call Decrypt_OpenFileFuntion(ChkFileName)
+                Call Decrypt_OpenFileFunction(ChkFileName)
                 Call SetTitle(ChkFileName)
 
             ElseIf result = DialogResult.Cancel Then
                 Exit Sub
             End If
         Else
-            Call Decrypt_OpenFileFuntion(ChkFileName)
+            Call Decrypt_OpenFileFunction(ChkFileName)
             Call SetTitle(ChkFileName)
         End If
 
@@ -201,7 +202,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/5/4{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, 劉子豪{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/7/20{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
@@ -248,5 +249,18 @@ Public Class WorkSpace
     Private Sub EspañolToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EspañolToolStripMenuItem.Click
         Call ChangeLanguage("es")
         Call SetTitle(ChkFileName)
+    End Sub
+
+    '允許加解密所有檔案格式(測試)
+    Private Sub AllowEncryptAllFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllowEncryptAllFileToolStripMenuItem.Click
+        AllowEncryptAllFileToolStripMenuItem.Checked = Not (AllowEncryptAllFileToolStripMenuItem.Checked)
+
+        If AllowEncryptAllFileToolStripMenuItem.Checked Then
+            DESOpenFile.Filter = "加密文件|*.ent|所有檔案|*.*"
+            DESSaveFile.Filter = "加密文件|*.ent|所有檔案|*.*"
+        Else
+            DESOpenFile.Filter = "加密文件|*.ent"
+            DESSaveFile.Filter = "加密文件|*.ent"
+        End If
     End Sub
 End Class

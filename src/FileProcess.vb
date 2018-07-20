@@ -1,15 +1,16 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.1.4 Alpha
-'Copyright(C) 2017-2018, 劉子豪
+'Encryption Notepad v.3.1.0.0 Alpha
+'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
+
 
 Module FileProcess
     'Dim AES_Key As String = "12345678"
     Dim DES_Key As String = login.GetNonEncryptedKey()
 
-    Function SaveFileFuntion(ByRef _FileName)
+    Function SaveFileFunction(ByRef _FileName)
         If _FileName = Nothing Then
             If WorkSpace.SaveFile.ShowDialog <> DialogResult.Cancel Then
                 My.Computer.FileSystem.WriteAllText(WorkSpace.SaveFile.FileName,
@@ -22,7 +23,7 @@ Module FileProcess
 
         Else
             If Right(_FileName, 3) = "ent" Then
-                Call SaveNewFileFuntion(_FileName)
+                Call SaveNewFileFunction(_FileName)
                 Return True
             Else
                 My.Computer.FileSystem.WriteAllText(_FileName,
@@ -36,7 +37,7 @@ Module FileProcess
         _FileName = WorkSpace.SaveFile.FileName
     End Function
 
-    Sub SaveNewFileFuntion(ByRef _FileName)
+    Sub SaveNewFileFunction(ByRef _FileName)
         If WorkSpace.SaveFile.ShowDialog() = DialogResult.OK Then
             My.Computer.FileSystem.WriteAllText(WorkSpace.SaveFile.FileName,
             WorkSpace.inputbox.Text, False)
@@ -60,12 +61,12 @@ Module FileProcess
         WorkSpace.inputbox.Text = Nothing
     End Sub
 
-    'Encrypt File Funtion
+    'Encrypt File Function
     '******************************************************
     '******************************************************
     '******************************************************
 
-    Sub Encrypt_SaveFileFuntion(ByRef _FileName)
+    Sub Encrypt_SaveFileFunction(ByRef _FileName)
         If _FileName = Nothing Then
             If WorkSpace.DESSaveFile.ShowDialog <> DialogResult.Cancel Then
                 My.Computer.FileSystem.WriteAllText(WorkSpace.DESSaveFile.FileName,
@@ -92,7 +93,7 @@ Module FileProcess
         End If
     End Sub
 
-    Sub Decrypt_OpenFileFuntion(ByRef _FileName)
+    Sub Decrypt_OpenFileFunction(ByRef _FileName)
         If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
             Try
                 WorkSpace.inputbox.Text = DES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.

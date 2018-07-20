@@ -1,9 +1,10 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.0.0 Pre-Alpha
+'Encryption Notepad v.3.1.0.0 Alpha
 'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
+
 
 Imports System.Net.Mail
 Imports System.Text

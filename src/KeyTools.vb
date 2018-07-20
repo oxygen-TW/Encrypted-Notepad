@@ -1,9 +1,10 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.0.0 Pre-Alpha
+'Encryption Notepad v.3.1.1.0 Alpha
 'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
+
 
 Module KeyTools
 
@@ -36,11 +37,11 @@ InputCheckError:
             GoTo InputCheckError
         End If
 
-        '讀取使用者密碼
-        Dim UserPwdSHA512 As String = ReadUserPassword()
+        '直接讀取使用者輸入的使用者密碼
+        Dim UserPwdSHA512 As String = SHA512hash_String(login.password)
 
         '寫入加密後金鑰至app
-        FileOpen(2, "app", OpenMode.Output)
+        FileOpen(2, Application.UserAppDataPath + "\app", OpenMode.Output)
         PrintLine(2, EncryptKey(SHA512hash_String(New_key), UserPwdSHA512))
         FileClose(2)
 
@@ -50,15 +51,16 @@ InputCheckError:
 
     Public Function GetCheckKeyFile() As Object
         Dim FileExist As Boolean = False
-        If My.Computer.FileSystem.FileExists("./app") Then
+        If My.Computer.FileSystem.FileExists(Application.UserAppDataPath + "/app") Then
             FileExist = True
         End If
         Return FileExist
     End Function
 
+    '讀取已被加密的金鑰
     Function ReadDESKey()
         Dim DESKey As String = Nothing
-        FileOpen(2, "app", OpenMode.Input)
+        FileOpen(2, Application.UserAppDataPath + "/app", OpenMode.Input)
         Input(2, DESKey)
         FileClose(2)
         Return DESKey

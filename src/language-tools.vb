@@ -1,15 +1,17 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.0.1.4 Alpha
-'Copyright(C) 2017-2018, 劉子豪
+'Encryption Notepad v.3.1.0.0 Alpha
+'Copyright(C) 2017, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
+
+
 
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Module language_tools
-    Dim LanguageFile As String = "language\"
+    Dim LanguageFile As String = Application.StartupPath + "\language\"
     Dim Current_Language As String
 
     Function ReadLanguageConfig(ByVal LanguageType)
