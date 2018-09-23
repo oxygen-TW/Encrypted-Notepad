@@ -7,7 +7,7 @@
 ![image](https://oxygentw.net/wp-files/logo/logo-resize.png)
 
 ## How to download?
-- Visit our website: https://encryptednotepad.oxygentw.net/
+- Visit our website: https://web.oxygentw.net/encryptednotepad/
 - SourceForge: https://sourceforge.net/projects/encryption-notepad/
 
 ## How to install?
