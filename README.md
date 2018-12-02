@@ -4,10 +4,10 @@
 <br/>
 **Encrypted-Notepad Project 2017-2018**
 
-![image](https://oxygentw.net/wp-files/logo/logo-resize.png)
+![image](https://oxygentw.net/files/logo.png)
 
 ## How to download?
-- Visit our website: https://web.oxygentw.net/encryptednotepad/
+- Visit our release https://github.com/oxygen-TW/Encrypted-Notepad/releases
 - SourceForge: https://sourceforge.net/projects/encryption-notepad/
 
 ## How to install?
@@ -21,11 +21,10 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update
-1. Update ```Encrypted Core``` to v2.0.
-2. Convert Application to UWP App.
-3. Add encrypt all types of file feature.
-4. Remove suck update checker.
+## Update v3.1.2.0
+
+1. Add print document feature.
+2. Update Newtonsoft.Json to 12.0.1
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
@@ -33,5 +32,6 @@
 
 ## RoadMap
 - Add Dynamic language menu.
+- Add auto-save function.
 - Add Google Drive sync function.
 - Improve safe level of ```Encrypted Core```.

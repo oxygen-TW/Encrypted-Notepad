@@ -2,7 +2,7 @@
   "language": "zh-tw",
   "version": "1.0",
   "login": {
-    "title": "登入",
+    "title": "驗證",
     "enter-password": "輸入密碼:",
     "confirm": "確認",
     "reset-password": "重設密碼",
@@ -18,7 +18,9 @@
       "save-file": "儲存檔案",
       "save-new-file": "另存新檔",
       "encrypt": "加密儲存",
-      "decrypt": "解密開啟"
+      "decrypt": "解密開啟",
+      "print-file": "列印檔案",
+      "print-preview": "預覽列印"
     },
     "text": {
       "index": "內文",

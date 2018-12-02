@@ -202,7 +202,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/7/20{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/12/2{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
@@ -262,5 +262,46 @@ Public Class WorkSpace
             DESOpenFile.Filter = "加密文件|*.ent"
             DESSaveFile.Filter = "加密文件|*.ent"
         End If
+    End Sub
+
+    '列印參數相同於inputbox的字型、顏色
+    'Ref: https://bbs.csdn.net/topics/240042309
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Static myBrush = New SolidBrush(inputbox.ForeColor)
+        Static limit As Integer
+        Dim n, L As Integer
+        Dim sFmt As New StringFormat(StringFormatFlags.LineLimit)
+        e.Graphics.MeasureString(Mid(inputbox.Text, limit + 1), inputbox.Font, e.MarginBounds.Size, sFmt, n, L)
+        e.Graphics.DrawString(Mid(inputbox.Text, limit + 1, n), inputbox.Font, myBrush, e.MarginBounds)
+        limit += n
+
+        If limit < inputbox.Text.Length Then
+            e.HasMorePages = True
+        Else
+            e.HasMorePages = False
+            limit = 0
+        End If
+    End Sub
+
+    Private Sub 列印檔案ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列印檔案ToolStripMenuItem.Click
+        PrintDialog1.Document = PrintDocument1
+        PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
+        PrintDialog1.AllowSomePages = True
+
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
+            '避免檔案無法寫入而程式崩潰
+            Try
+                PrintDocument1.Print()
+            Catch ex As Exception
+                MessageBox.Show("列印發生錯誤" + vbNewLine + "請檢查目標檔案是否已被開啟", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+        End If
+    End Sub
+
+    Private Sub 預覽列印ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 預覽列印ToolStripMenuItem.Click
+        PrintPreviewDialog1.Document = PrintDocument1
+        PrintPreviewDialog1.ShowDialog()
     End Sub
 End Class

@@ -2,7 +2,7 @@
   "language": "zn-cn",
   "version": "1.0",
   "login": {
-    "title": "登入",
+    "title": "验证",
     "enter-password": "输入密码:",
     "confirm": "确认",
     "reset-password": "重设密码",
@@ -18,7 +18,9 @@
       "save-file": "储存档案",
       "save-new-file": "另存新档",
       "encrypt": "加密储存",
-      "decrypt": "解密开启"
+      "decrypt": "解密开启",
+      "print-file": "打印档案",
+      "print-preview": "预览列印"
     },
     "text": {
       "index": "内文",

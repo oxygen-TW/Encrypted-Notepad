@@ -86,6 +86,8 @@ Module language_tools
         WorkSpace.另存新檔ToolStripMenuItem.Text = JsonData.Item("workspace")("file")("save-new-file").ToString
         WorkSpace.加密儲存ToolStripMenuItem.Text = JsonData.Item("workspace")("file")("encrypt").ToString
         WorkSpace.解密開啟ToolStripMenuItem.Text = JsonData.Item("workspace")("file")("decrypt").ToString
+        WorkSpace.列印檔案ToolStripMenuItem.Text = JsonData.Item("workspace")("file")("print-file").ToString
+        WorkSpace.預覽列印ToolStripMenuItem.Text = JsonData.Item("workspace")("file")("print-preview").ToString
 
         WorkSpace.內文ToolStripMenuItem.Text = JsonData.Item("workspace")("text")("index").ToString
         WorkSpace.字型ToolStripMenuItem.Text = JsonData.Item("workspace")("text")("font").ToString

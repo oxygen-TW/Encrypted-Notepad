@@ -8,7 +8,7 @@
 Public Class login
 
     ''' 重要! 版本號定義常數 '''
-    Public Const Version = "3.1.1.1"
+    Public Const Version = "3.1.2.0"
 
     Public password As String = "0000"
     Dim Old_pwd As String = Nothing

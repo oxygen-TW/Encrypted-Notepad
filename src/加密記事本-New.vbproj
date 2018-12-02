@@ -30,8 +30,8 @@
     <SuiteName>Encryption Notepad</SuiteName>
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>3.1.1.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>3.1.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -70,10 +70,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>54A82DF653D999D7947938F95607BD08E59D265C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7934D108692FE28235E87214259EF728A90E536A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>加密記事本-New_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>加密記事本-New_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -88,8 +88,8 @@
     <ApplicationIcon>notepad.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Rework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Rework.1.0.12\lib\net45\Rework.dll</HintPath>
@@ -220,6 +220,7 @@
     </Content>
     <None Include="加密記事本-New_1_TemporaryKey.pfx" />
     <None Include="加密記事本-New_2_TemporaryKey.pfx" />
+    <None Include="加密記事本-New_3_TemporaryKey.pfx" />
     <None Include="加密記事本-New_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

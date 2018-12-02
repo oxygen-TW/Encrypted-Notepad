@@ -2,7 +2,7 @@
     "language": "es",
     "version": "1.0",
     "login": {
-      "title": "iniciar sesión",
+      "title": "Autorización",
       "enter-password": "Introducir la contraseña:",
       "confirm": "Confirmar",
       "reset-password": "Reiniciar",
@@ -18,7 +18,9 @@
         "save-file": "Guardar el archivo",
         "save-new-file": "Guardar nuevo archivo",
         "encrypt": "Encriptado Salvar",
-        "decrypt": "Descifrado Abierto"
+        "decrypt": "Descifrado Abierto",
+        "print-file": "Imprimir archivo",
+        "print-preview": "Vista previa de impresión"
       },
       "text": {
         "index": "Texto",

@@ -2,7 +2,7 @@
   "language": "en-us",
   "version": "1.0",
   "login": {
-    "title": "login",
+    "title": "Authorization",
     "enter-password": "Enter Password:",
     "confirm": "Confirm",
     "reset-password": "Reset",
@@ -18,7 +18,9 @@
       "save-file": "Save File",
       "save-new-file": "Save New File",
       "encrypt": "Encrypted Save",
-      "decrypt": "Decryped Open"
+      "decrypt": "Decryped Open",
+      "print-file": "Print File",
+      "print-preview": "Print Preview"
     },
     "text": {
       "index": "Text",
@@ -56,8 +58,8 @@
       "success": "New Password Change Success!"
     }
   },
-  "author": "oxygen-studio ¼B¤l»¨",
-  "software-CopyRight": "Copyright (C) 2017, ¼B¤l»¨ All rights reserved",
-  "translater": "¼B¤l»¨",
+  "author": "oxygen-studio ï¿½Bï¿½lï¿½ï¿½",
+  "software-CopyRight": "Copyright (C) 2017, ï¿½Bï¿½lï¿½ï¿½ All rights reserved",
+  "translater": "ï¿½Bï¿½lï¿½ï¿½",
   "translate-CopyRight": "MIT License"
 }
