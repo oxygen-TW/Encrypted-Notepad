@@ -8,7 +8,7 @@
 Public Class login
 
     ''' 重要! 版本號定義常數 '''
-    Public Const Version = "3.1.2.0"
+    Public Const Version = "3.2.0.0"
 
     Public password As String = "0000"
     Dim Old_pwd As String = Nothing
@@ -17,6 +17,7 @@ Public Class login
     Public WindowLocation = New Point(230, 130)
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call LoadConfigFile() '讀取使用者設定
         Call Init_Language(ReadLanguageConfig(DefaultLanguage())) '設定語系
         'Console.WriteLine(SHA512hash_String("0000")) 'Debug only
 

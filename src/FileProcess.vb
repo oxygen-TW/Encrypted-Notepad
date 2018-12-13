@@ -15,14 +15,14 @@ Module FileProcess
             If WorkSpace.SaveFile.ShowDialog <> DialogResult.Cancel Then
                 My.Computer.FileSystem.WriteAllText(WorkSpace.SaveFile.FileName,
             WorkSpace.inputbox.Text, False)
-
+                _FileName = WorkSpace.SaveFile.FileName
                 Return True
             Else
                 Return False
             End If
 
         Else
-            If Right(_FileName, 3) = "ent" Then
+            If IO.Path.GetExtension(_FileName) = ".ent" Then
                 Call SaveNewFileFunction(_FileName)
                 Return True
             Else
@@ -79,7 +79,7 @@ Module FileProcess
             End If
 
         Else
-            If Right(_FileName, 3) = "ent" Then
+            If IO.Path.GetExtension(_FileName) = ".ent" Then
                 My.Computer.FileSystem.WriteAllText(_FileName,
                  DES_Encrypt(WorkSpace.inputbox.Text, DES_Key), False)
             Else

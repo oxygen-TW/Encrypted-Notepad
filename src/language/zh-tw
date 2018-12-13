@@ -41,7 +41,8 @@
     },
     "setting": {
       "index": "設定",
-      "language": "更改語言"
+      "language": "更改語言",
+      "autosave":  "自動儲存"
     },
     "about": {
       "index": "關於"

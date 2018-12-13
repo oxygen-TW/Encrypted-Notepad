@@ -26,18 +26,12 @@ Module language_tools
     End Function
 
     Function DefaultLanguage()
-        Dim default_Language As String = Nothing
-        FileOpen(3, LanguageFile + "default", OpenMode.Input)
-        Input(3, default_Language)
-        FileClose(3)
-
-        Return default_Language
+        Return ConfigTools._defaultLanguage
     End Function
 
     Sub ChangeDefaultLanguage(ByVal language)
-        FileOpen(3, LanguageFile + "default", OpenMode.Output)
-        WriteLine(3, language)
-        FileClose(3)
+        ConfigTools._defaultLanguage = language
+        WriteConfigFile()
     End Sub
 
     Sub ChangeLanguage(ByVal language)
@@ -104,6 +98,7 @@ Module language_tools
 
         WorkSpace.設定ToolStripMenuItem.Text = JsonData.Item("workspace")("setting")("index").ToString
         WorkSpace.語言ToolStripMenuItem.Text = JsonData.Item("workspace")("setting")("language").ToString
+        WorkSpace.自動儲存ToolStripMenuItem.Text = JsonData.Item("workspace")("setting")("autosave").ToString
         WorkSpace.關於ToolStripMenuItem.Text = JsonData.Item("workspace")("about")("index").ToString
         WorkSpace.AboutMsgBoxTitle = JsonData.Item("workspace")("about")("index").ToString
     End Sub

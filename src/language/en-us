@@ -41,7 +41,8 @@
     },
     "setting": {
       "index": "Setting",
-      "language": "change language"
+      "language": "Change language",
+      "autosave": "Auto save"
     },
     "about": {
       "index": "About"

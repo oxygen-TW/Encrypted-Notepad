@@ -1,12 +1,13 @@
 ﻿'-----------------------------
 'Encryption Notepad v.3.1.0.0 Alpha
-'Copyright(C) 2017, 劉子豪
+'Copyright(C) 2017-2018, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
 
 
 Public Class WorkSpace
+    '狀態變數
     Dim ChkFileName = Nothing
     Dim TextModify As Boolean = False
     Dim AutoNewLine As Boolean = True
@@ -202,14 +203,18 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/12/2{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/12/14{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
     Private Sub WorkSpace_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.Location = login.WindowLocation
+        LoadConfigFile() '讀取使用者設定
 
+        '開始套用使用者設定
         Call SetTitle(ChkFileName)
+        自動儲存ToolStripMenuItem.Checked = ConfigTools._autosaveFunction
+        WriteConfigFile()
 
     End Sub
 
@@ -241,10 +246,10 @@ Public Class WorkSpace
         Call SetTitle(ChkFileName)
     End Sub
 
-    Private Sub WorkSpace_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
-        login.WindowLocation = Me.Location '紀錄視窗修改
-        Label1.Text = login.WindowLocation.ToString
-    End Sub
+    'Private Sub WorkSpace_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    '    login.WindowLocation = Me.Location '紀錄視窗修改
+    '    Label1.Text = login.WindowLocation.ToString
+    'End Sub
 
     Private Sub EspañolToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EspañolToolStripMenuItem.Click
         Call ChangeLanguage("es")
@@ -253,7 +258,6 @@ Public Class WorkSpace
 
     '允許加解密所有檔案格式(測試)
     Private Sub AllowEncryptAllFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllowEncryptAllFileToolStripMenuItem.Click
-        AllowEncryptAllFileToolStripMenuItem.Checked = Not (AllowEncryptAllFileToolStripMenuItem.Checked)
 
         If AllowEncryptAllFileToolStripMenuItem.Checked Then
             DESOpenFile.Filter = "加密文件|*.ent|所有檔案|*.*"
@@ -303,5 +307,37 @@ Public Class WorkSpace
     Private Sub 預覽列印ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 預覽列印ToolStripMenuItem.Click
         PrintPreviewDialog1.Document = PrintDocument1
         PrintPreviewDialog1.ShowDialog()
+    End Sub
+
+    Private Sub 自動儲存ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 自動儲存ToolStripMenuItem.Click
+        AutoSaveTimer.Enabled = 自動儲存ToolStripMenuItem.Checked
+        ConfigTools._autosaveFunction = 自動儲存ToolStripMenuItem.Checked
+        ConfigTools.WriteConfigFile()
+    End Sub
+
+    Private Sub AutoSaveTimer_Tick(sender As Object, e As EventArgs) Handles AutoSaveTimer.Tick
+
+        If ChkFileName <> Nothing Then
+            Dim SubFileName As String = IO.Path.GetExtension(ChkFileName) 'Microsoft.VisualBasic.Strings.Right(ChkFileName, 3)
+
+            If SubFileName = ".ent" Or SubFileName = ".ENT" Then
+                Call Encrypt_SaveFileFunction(ChkFileName)
+                TextModify = False
+                Console.WriteLine("Call Encrypted save")
+            Else
+                Call SaveFileFunction(ChkFileName)
+                TextModify = False
+                Console.WriteLine("Call Normal save")
+            End If
+        Else
+            Console.WriteLine("Timer tick but no file name.")
+
+        End If
+
+    End Sub
+
+    'DEVELOP ONLY! Invisible before release
+    Private Sub Testbutton_Click(sender As Object, e As EventArgs) Handles Testbutton.Click
+
     End Sub
 End Class
