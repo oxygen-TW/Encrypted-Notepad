@@ -23,8 +23,10 @@
 
 ## Update v3.1.2.0
 
-1. Add print document feature.
-2. Update Newtonsoft.Json to 12.0.1
+1. Fix problem of saving file path.
+2. Integrate user preferences into config file.
+3. Integrate language setting into config file.
+4. Add auto save feature.
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
