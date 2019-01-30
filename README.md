@@ -21,7 +21,7 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.1.2.0
+## Update v3.2.0.0
 
 1. Fix problem of saving file path.
 2. Integrate user preferences into config file.
