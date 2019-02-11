@@ -8,7 +8,9 @@
 
 Module FileProcess
     'Dim AES_Key As String = "12345678"
-    Dim DES_Key As String = login.GetNonEncryptedKey()
+    Dim DES_Key As String = login.GetNonEncryptedKey(8)
+    Dim TDES_Key As String = login.GetNonEncryptedKey(24)
+
 
     Function SaveFileFunction(ByRef _FileName)
         If _FileName = Nothing Then
@@ -67,13 +69,21 @@ Module FileProcess
     '******************************************************
 
     Sub Encrypt_SaveFileFunction(ByRef _FileName)
+        '處理加密演算法選擇，日後將移除
+        Dim SaveText As String = Nothing
+        If WorkSpace.AlgoType = 0 Then
+            SaveText = DES_Encrypt(WorkSpace.inputbox.Text, DES_Key)
+        ElseIf WorkSpace.AlgoType = 1 Then
+            SaveText = TDES_Encrypt(WorkSpace.inputbox.Text, TDES_Key, GenerateIV())
+        End If
+
         If _FileName = Nothing Then
             If WorkSpace.DESSaveFile.ShowDialog <> DialogResult.Cancel Then
                 My.Computer.FileSystem.WriteAllText(WorkSpace.DESSaveFile.FileName,
-           DES_Encrypt(WorkSpace.inputbox.Text, DES_Key), False)
+           SaveText, False)
 
                 My.Computer.FileSystem.WriteAllText(WorkSpace.DESSaveFile.FileName,
-            DES_Encrypt(WorkSpace.inputbox.Text, DES_Key), False)
+            SaveText, False)
 
                 _FileName = WorkSpace.DESSaveFile.FileName
             End If
@@ -81,11 +91,11 @@ Module FileProcess
         Else
             If IO.Path.GetExtension(_FileName) = ".ent" Then
                 My.Computer.FileSystem.WriteAllText(_FileName,
-                 DES_Encrypt(WorkSpace.inputbox.Text, DES_Key), False)
+                 SaveText, False)
             Else
                 If WorkSpace.DESSaveFile.ShowDialog() = DialogResult.OK Then
                     My.Computer.FileSystem.WriteAllText(WorkSpace.DESSaveFile.FileName,
-                    DES_Encrypt(WorkSpace.inputbox.Text, DES_Key), False)
+                    SaveText, False)
 
                     _FileName = WorkSpace.DESSaveFile.FileName
                 End If
@@ -94,18 +104,38 @@ Module FileProcess
     End Sub
 
     Sub Decrypt_OpenFileFunction(ByRef _FileName)
-        If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
-            Try
-                WorkSpace.inputbox.Text = DES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
+        '處理加密演算法選擇，日後將移除
+
+        If WorkSpace.AlgoType = 0 Then
+            If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+                Try
+                    WorkSpace.inputbox.Text = DES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
             FileName, Text.Encoding.Default), DES_Key)
 
-                _FileName = WorkSpace.DESOpenFile.FileName
-            Catch ex As Exception
-                MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WorkSpace.inputbox.Text = "解密失敗"
-                _FileName = Nothing
-            End Try
+                    _FileName = WorkSpace.DESOpenFile.FileName
+                Catch ex As Exception
+                    MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰，請檢查加密演算法是否正確", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    WorkSpace.inputbox.Text = "解密失敗"
+                    _FileName = Nothing
+                End Try
 
+            End If
+        ElseIf WorkSpace.AlgoType = 1 Then
+            If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+                Try
+                    WorkSpace.inputbox.Text = TDES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
+            FileName, Text.Encoding.Default), TDES_Key, GenerateIV())
+
+                    _FileName = WorkSpace.DESOpenFile.FileName
+                Catch ex As Exception
+                    MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰，請檢查加密演算法是否正確", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    WorkSpace.inputbox.Text = "解密失敗"
+                    _FileName = Nothing
+                End Try
+
+            End If
         End If
+
+
     End Sub
 End Module
