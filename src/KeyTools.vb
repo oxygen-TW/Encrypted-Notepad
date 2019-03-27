@@ -1,6 +1,6 @@
 ﻿'-----------------------------
 'Encryption Notepad v.3.1.1.0 Alpha
-'Copyright(C) 2017, 劉子豪
+'Copyright(C) 2019, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
 '-----------------------------
@@ -12,7 +12,7 @@ Module KeyTools
         Dim CheckInput = Nothing
         Dim New_key As String = False
 
-        MessageBox.Show($"非常重要！{vbNewLine}此版本加入了升級的Triple DES加密演算法，若使用Triple DES則即使金鑰與舊版本相同也無法解密由DES演算法加密的文件{vbNewLine}可從選單中選擇舊版的DES進行解密，但請盡速將舊版本的加密文件解密成明文，因為較不安全的DES加密可能在數個版本後會被移除。", "重要通知", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        MessageBox.Show($"非常重要！{vbNewLine}此版本加入了升級的Triple DES 和 AES CBC加密演算法，若使用Triple DES/AES則即使金鑰與舊版本相同也無法解密由DES演算法加密的文件{vbNewLine}可從選單中選擇舊版的DES進行解密，但請盡速將舊版本的加密文件解密成明文，因為較不安全的DES加密可能在數個版本後會被移除。", "重要通知", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 
         Do While Not (CheckInput)
 InputCheckError:

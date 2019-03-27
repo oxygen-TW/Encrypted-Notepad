@@ -8,7 +8,7 @@
 Public Class login
 
     ''' 重要! 版本管理定義常數 '''
-    Public Const Version = "3.3.0"
+    Public Const Version = "3.4.0"
     Public Const SoftwareStatus = "Beta"
 
     Public password As String = "0000"
@@ -39,13 +39,22 @@ Public Class login
             WorkSpace.AlgoType = 0
             WorkSpace.DESToolStripMenuItem.Checked = True
             WorkSpace.TripleDESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = False
             WorkSpace.AlgoTypeLabel.Text = "DES"
         ElseIf _defaultAlgorism = "TDES" Then
             WorkSpace.AlgoType = 1
             WorkSpace.TripleDESToolStripMenuItem.Checked = True
             WorkSpace.DESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = False
             WorkSpace.AlgoTypeLabel.Text = "Triple DES"
+        ElseIf _defaultAlgorism = "AESCBC" Then
+            WorkSpace.AlgoType = 2
+            WorkSpace.TripleDESToolStripMenuItem.Checked = False
+            WorkSpace.DESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = True
+            WorkSpace.AlgoTypeLabel.Text = "AES CBC"
         End If
+
         If Not GetCheckKeyFile() Then
             Dim result = GetNewKey()
             If result = 1 Then Application.Exit()

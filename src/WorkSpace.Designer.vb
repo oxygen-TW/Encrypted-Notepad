@@ -58,12 +58,12 @@ Partial Class WorkSpace
         Me.简体中文ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.英文ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EspañolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.自動儲存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.錯誤回報BetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AllowEncryptAllFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EncryptAlgorismType = New System.Windows.Forms.ToolStripMenuItem()
         Me.DESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TripleDESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.自動儲存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.錯誤回報BetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AllowEncryptAllFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.關於ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
@@ -75,6 +75,7 @@ Partial Class WorkSpace
         Me.Testbutton = New System.Windows.Forms.Button()
         Me.TextLengthLabel = New System.Windows.Forms.Label()
         Me.AlgoTypeLabel = New System.Windows.Forms.Label()
+        Me.AESCBCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -111,7 +112,7 @@ Partial Class WorkSpace
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(10, 3, 0, 3)
-        Me.MenuStrip1.Size = New System.Drawing.Size(753, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(753, 30)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -120,218 +121,198 @@ Partial Class WorkSpace
         Me.檔案ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.開新檔案ToolStripMenuItem, Me.開啟舊檔ToolStripMenuItem, Me.儲存檔案ToolStripMenuItem, Me.另存新檔ToolStripMenuItem, Me.預覽列印ToolStripMenuItem, Me.列印檔案ToolStripMenuItem, Me.ToolStripSeparator1, Me.加密儲存ToolStripMenuItem, Me.解密開啟ToolStripMenuItem})
         Me.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem"
         Me.檔案ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
         Me.檔案ToolStripMenuItem.Text = "檔案"
         '
         '開新檔案ToolStripMenuItem
         '
         Me.開新檔案ToolStripMenuItem.Name = "開新檔案ToolStripMenuItem"
         Me.開新檔案ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.開新檔案ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.開新檔案ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.開新檔案ToolStripMenuItem.Text = "開新檔案"
         '
         '開啟舊檔ToolStripMenuItem
         '
         Me.開啟舊檔ToolStripMenuItem.Name = "開啟舊檔ToolStripMenuItem"
         Me.開啟舊檔ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.開啟舊檔ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.開啟舊檔ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.開啟舊檔ToolStripMenuItem.Text = "開啟舊檔"
         '
         '儲存檔案ToolStripMenuItem
         '
         Me.儲存檔案ToolStripMenuItem.Name = "儲存檔案ToolStripMenuItem"
         Me.儲存檔案ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.儲存檔案ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.儲存檔案ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.儲存檔案ToolStripMenuItem.Text = "儲存檔案"
         '
         '另存新檔ToolStripMenuItem
         '
         Me.另存新檔ToolStripMenuItem.Name = "另存新檔ToolStripMenuItem"
         Me.另存新檔ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.另存新檔ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.另存新檔ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.另存新檔ToolStripMenuItem.Text = "另存新檔"
         '
         '預覽列印ToolStripMenuItem
         '
         Me.預覽列印ToolStripMenuItem.Name = "預覽列印ToolStripMenuItem"
-        Me.預覽列印ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.預覽列印ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.預覽列印ToolStripMenuItem.Text = "預覽列印"
         '
         '列印檔案ToolStripMenuItem
         '
         Me.列印檔案ToolStripMenuItem.Name = "列印檔案ToolStripMenuItem"
-        Me.列印檔案ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.列印檔案ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.列印檔案ToolStripMenuItem.Text = "列印檔案"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(198, 6)
         '
         '加密儲存ToolStripMenuItem
         '
         Me.加密儲存ToolStripMenuItem.Name = "加密儲存ToolStripMenuItem"
         Me.加密儲存ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.加密儲存ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.加密儲存ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.加密儲存ToolStripMenuItem.Text = "加密儲存"
         '
         '解密開啟ToolStripMenuItem
         '
         Me.解密開啟ToolStripMenuItem.Name = "解密開啟ToolStripMenuItem"
         Me.解密開啟ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.解密開啟ToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.解密開啟ToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.解密開啟ToolStripMenuItem.Text = "解密開啟"
         '
         '內文ToolStripMenuItem
         '
         Me.內文ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.字型ToolStripMenuItem, Me.顏色ToolStripMenuItem, Me.ToolStripSeparator3, Me.自動換行ToolStripMenuItem, Me.時間戳記ToolStripMenuItem, Me.ToolStripSeparator4, Me.複製ToolStripMenuItem, Me.貼上ToolStripMenuItem, Me.全選ToolStripMenuItem, Me.清除ToolStripMenuItem})
         Me.內文ToolStripMenuItem.Name = "內文ToolStripMenuItem"
-        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
         Me.內文ToolStripMenuItem.Text = "內文"
         '
         '字型ToolStripMenuItem
         '
         Me.字型ToolStripMenuItem.Name = "字型ToolStripMenuItem"
         Me.字型ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.字型ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.字型ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.字型ToolStripMenuItem.Text = "字型"
         '
         '顏色ToolStripMenuItem
         '
         Me.顏色ToolStripMenuItem.Name = "顏色ToolStripMenuItem"
-        Me.顏色ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.顏色ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.顏色ToolStripMenuItem.Text = "顏色"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(157, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(188, 6)
         '
         '自動換行ToolStripMenuItem
         '
         Me.自動換行ToolStripMenuItem.Checked = True
         Me.自動換行ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.自動換行ToolStripMenuItem.Name = "自動換行ToolStripMenuItem"
-        Me.自動換行ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.自動換行ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.自動換行ToolStripMenuItem.Text = "自動換行"
         '
         '時間戳記ToolStripMenuItem
         '
         Me.時間戳記ToolStripMenuItem.Name = "時間戳記ToolStripMenuItem"
         Me.時間戳記ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
-        Me.時間戳記ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.時間戳記ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.時間戳記ToolStripMenuItem.Text = "時間戳記"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(157, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(188, 6)
         '
         '複製ToolStripMenuItem
         '
         Me.複製ToolStripMenuItem.Name = "複製ToolStripMenuItem"
         Me.複製ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.複製ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.複製ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.複製ToolStripMenuItem.Text = "複製"
         '
         '貼上ToolStripMenuItem
         '
         Me.貼上ToolStripMenuItem.Name = "貼上ToolStripMenuItem"
         Me.貼上ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.貼上ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.貼上ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.貼上ToolStripMenuItem.Text = "貼上"
         '
         '全選ToolStripMenuItem
         '
         Me.全選ToolStripMenuItem.Name = "全選ToolStripMenuItem"
         Me.全選ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.全選ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.全選ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.全選ToolStripMenuItem.Text = "全選"
         '
         '清除ToolStripMenuItem
         '
         Me.清除ToolStripMenuItem.Name = "清除ToolStripMenuItem"
         Me.清除ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.清除ToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.清除ToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.清除ToolStripMenuItem.Text = "清除"
         '
         '鎖定ToolStripMenuItem
         '
         Me.鎖定ToolStripMenuItem.Name = "鎖定ToolStripMenuItem"
         Me.鎖定ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
         Me.鎖定ToolStripMenuItem.Text = "鎖定"
         '
         '離開ToolStripMenuItem
         '
         Me.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem"
         Me.離開ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
         Me.離開ToolStripMenuItem.Text = "離開"
         '
         '設定ToolStripMenuItem
         '
         Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.語言ToolStripMenuItem, Me.EncryptAlgorismType, Me.自動儲存ToolStripMenuItem, Me.錯誤回報BetaToolStripMenuItem, Me.AllowEncryptAllFileToolStripMenuItem})
         Me.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem"
-        Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.設定ToolStripMenuItem.Text = "設定"
         '
         '語言ToolStripMenuItem
         '
         Me.語言ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.繁體中文ToolStripMenuItem, Me.简体中文ToolStripMenuItem, Me.英文ToolStripMenuItem, Me.EspañolToolStripMenuItem})
         Me.語言ToolStripMenuItem.Name = "語言ToolStripMenuItem"
-        Me.語言ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.語言ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.語言ToolStripMenuItem.Text = "語言"
         '
         '繁體中文ToolStripMenuItem
         '
         Me.繁體中文ToolStripMenuItem.Name = "繁體中文ToolStripMenuItem"
-        Me.繁體中文ToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.繁體中文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.繁體中文ToolStripMenuItem.Text = "繁體中文"
         '
         '简体中文ToolStripMenuItem
         '
         Me.简体中文ToolStripMenuItem.Name = "简体中文ToolStripMenuItem"
-        Me.简体中文ToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.简体中文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.简体中文ToolStripMenuItem.Text = "简体中文"
         '
         '英文ToolStripMenuItem
         '
         Me.英文ToolStripMenuItem.Name = "英文ToolStripMenuItem"
-        Me.英文ToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.英文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.英文ToolStripMenuItem.Text = "English"
         '
         'EspañolToolStripMenuItem
         '
         Me.EspañolToolStripMenuItem.Name = "EspañolToolStripMenuItem"
-        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.EspañolToolStripMenuItem.Text = "Español"
-        '
-        '自動儲存ToolStripMenuItem
-        '
-        Me.自動儲存ToolStripMenuItem.CheckOnClick = True
-        Me.自動儲存ToolStripMenuItem.Name = "自動儲存ToolStripMenuItem"
-        Me.自動儲存ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.自動儲存ToolStripMenuItem.Text = "自動儲存"
-        '
-        '錯誤回報BetaToolStripMenuItem
-        '
-        Me.錯誤回報BetaToolStripMenuItem.Name = "錯誤回報BetaToolStripMenuItem"
-        Me.錯誤回報BetaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.錯誤回報BetaToolStripMenuItem.Text = "傳送建議"
-        '
-        'AllowEncryptAllFileToolStripMenuItem
-        '
-        Me.AllowEncryptAllFileToolStripMenuItem.CheckOnClick = True
-        Me.AllowEncryptAllFileToolStripMenuItem.Name = "AllowEncryptAllFileToolStripMenuItem"
-        Me.AllowEncryptAllFileToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.AllowEncryptAllFileToolStripMenuItem.Text = "允許加密非文字檔"
         '
         'EncryptAlgorismType
         '
-        Me.EncryptAlgorismType.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DESToolStripMenuItem, Me.TripleDESToolStripMenuItem})
+        Me.EncryptAlgorismType.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DESToolStripMenuItem, Me.TripleDESToolStripMenuItem, Me.AESCBCToolStripMenuItem})
         Me.EncryptAlgorismType.Name = "EncryptAlgorismType"
-        Me.EncryptAlgorismType.Size = New System.Drawing.Size(180, 22)
+        Me.EncryptAlgorismType.Size = New System.Drawing.Size(216, 26)
         Me.EncryptAlgorismType.Text = "加密演算法"
         '
         'DESToolStripMenuItem
@@ -340,19 +321,39 @@ Partial Class WorkSpace
         Me.DESToolStripMenuItem.CheckOnClick = True
         Me.DESToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.DESToolStripMenuItem.Name = "DESToolStripMenuItem"
-        Me.DESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DESToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.DESToolStripMenuItem.Text = "DES"
         '
         'TripleDESToolStripMenuItem
         '
         Me.TripleDESToolStripMenuItem.Name = "TripleDESToolStripMenuItem"
-        Me.TripleDESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TripleDESToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.TripleDESToolStripMenuItem.Text = "Triple DES"
+        '
+        '自動儲存ToolStripMenuItem
+        '
+        Me.自動儲存ToolStripMenuItem.CheckOnClick = True
+        Me.自動儲存ToolStripMenuItem.Name = "自動儲存ToolStripMenuItem"
+        Me.自動儲存ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.自動儲存ToolStripMenuItem.Text = "自動儲存"
+        '
+        '錯誤回報BetaToolStripMenuItem
+        '
+        Me.錯誤回報BetaToolStripMenuItem.Name = "錯誤回報BetaToolStripMenuItem"
+        Me.錯誤回報BetaToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.錯誤回報BetaToolStripMenuItem.Text = "傳送建議"
+        '
+        'AllowEncryptAllFileToolStripMenuItem
+        '
+        Me.AllowEncryptAllFileToolStripMenuItem.CheckOnClick = True
+        Me.AllowEncryptAllFileToolStripMenuItem.Name = "AllowEncryptAllFileToolStripMenuItem"
+        Me.AllowEncryptAllFileToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.AllowEncryptAllFileToolStripMenuItem.Text = "允許加密非文字檔"
         '
         '關於ToolStripMenuItem
         '
         Me.關於ToolStripMenuItem.Name = "關於ToolStripMenuItem"
-        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(43, 19)
+        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
         Me.關於ToolStripMenuItem.Text = "關於"
         '
         'PrintDialog1
@@ -406,7 +407,7 @@ Partial Class WorkSpace
         Me.TextLengthLabel.AutoSize = True
         Me.TextLengthLabel.Location = New System.Drawing.Point(633, 80)
         Me.TextLengthLabel.Name = "TextLengthLabel"
-        Me.TextLengthLabel.Size = New System.Drawing.Size(58, 20)
+        Me.TextLengthLabel.Size = New System.Drawing.Size(74, 25)
         Me.TextLengthLabel.TabIndex = 12
         Me.TextLengthLabel.Text = "Label1"
         Me.TextLengthLabel.Visible = False
@@ -421,9 +422,15 @@ Partial Class WorkSpace
         Me.AlgoTypeLabel.Text = "Triple DES"
         Me.AlgoTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'AESCBCToolStripMenuItem
+        '
+        Me.AESCBCToolStripMenuItem.Name = "AESCBCToolStripMenuItem"
+        Me.AESCBCToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.AESCBCToolStripMenuItem.Text = "AES CBC"
+        '
         'WorkSpace
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(753, 364)
         Me.Controls.Add(Me.AlgoTypeLabel)
@@ -494,4 +501,5 @@ Partial Class WorkSpace
     Friend WithEvents DESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TripleDESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AlgoTypeLabel As Label
+    Friend WithEvents AESCBCToolStripMenuItem As ToolStripMenuItem
 End Class

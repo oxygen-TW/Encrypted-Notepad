@@ -17,7 +17,7 @@ Public Class WorkSpace
     Public Untitle As String
     Public AboutMsgBoxTitle As String
 
-    '設定演算法變數 0=DES 1=3DES
+    '設定演算法變數 0=DES 1=3DES 2=AES CBC
     Public AlgoType = 0
 
     Sub SetTitle(ByVal _FileName)
@@ -206,7 +206,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} {login.SoftwareStatus}{vbNewLine}編譯日期 2019/02/11{vbNewLine}{vbNewLine}Copyright (C) 2017-2019, Oxygen Studio{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} {login.SoftwareStatus}{vbNewLine}編譯日期 2019/03/27{vbNewLine}{vbNewLine}Copyright (C) 2017-2019, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
@@ -329,6 +329,7 @@ Public Class WorkSpace
         If ChkFileName <> Nothing Then
             Dim SubFileName As String = IO.Path.GetExtension(ChkFileName) 'Microsoft.VisualBasic.Strings.Right(ChkFileName, 3)
 
+            '演算法選擇由FileProcess決定
             If SubFileName = ".ent" Or SubFileName = ".ENT" Then
                 Call Encrypt_SaveFileFunction(ChkFileName)
                 TextModify = False
@@ -349,6 +350,7 @@ Public Class WorkSpace
         AlgoType = 0
         DESToolStripMenuItem.Checked = True
         TripleDESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = False
         AlgoTypeLabel.Text = "DES"
         _defaultAlgorism = "DES"
         WriteConfigFile() '修改演算法到config
@@ -358,8 +360,19 @@ Public Class WorkSpace
         AlgoType = 1
         TripleDESToolStripMenuItem.Checked = True
         DESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = False
         AlgoTypeLabel.Text = "Triple DES"
         _defaultAlgorism = "TDES"
+        WriteConfigFile() '修改演算法到config
+    End Sub
+
+    Private Sub AESCBCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AESCBCToolStripMenuItem.Click
+        AlgoType = 2
+        TripleDESToolStripMenuItem.Checked = False
+        DESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = True
+        AlgoTypeLabel.Text = "AES CBC"
+        _defaultAlgorism = "AESCBC"
         WriteConfigFile() '修改演算法到config
     End Sub
 
@@ -367,4 +380,5 @@ Public Class WorkSpace
     Private Sub Testbutton_Click(sender As Object, e As EventArgs) Handles Testbutton.Click
         inputbox.Rtf = inputbox.Text
     End Sub
+
 End Class

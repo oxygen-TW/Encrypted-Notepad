@@ -21,18 +21,17 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.3.0
+## Update v3.4.0
 
-1. Change version number to `x.x.x`.
-2. Add Triple DES encryption algorism & update core to `v2.5`.
-3. Some UI modify.
+1. Add `AES CBC` encryption algorism & update core to `v3.0`.
+2. Start change code to OOP.
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
 - [Rework](https://github.com/Lukejkw/Rework)
 
 ## RoadMap
-- Add Dynamic language menu.
+- Change code style to OOP.
 - Add text number counter.
 - Add Google Drive sync function.
 - Improve safe level of ```Encrypted Core```.
