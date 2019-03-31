@@ -7,8 +7,9 @@
 
 Public Class login
 
-    ''' 重要! 版本號定義常數 '''
-    Public Const Version = "3.2.0.0"
+    ''' 重要! 版本管理定義常數 '''
+    Public Const Version = "3.4.0"
+    Public Const SoftwareStatus = "Beta"
 
     Public password As String = "0000"
     Dim Old_pwd As String = Nothing
@@ -33,32 +34,33 @@ Public Class login
         PwdReset.Left = login_buttom.Left
 
         'MsgBox(Application.UserAppDataPath)
+        '加密演算法配置
+        If _defaultAlgorism = "DES" Then
+            WorkSpace.AlgoType = 0
+            WorkSpace.DESToolStripMenuItem.Checked = True
+            WorkSpace.TripleDESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = False
+            WorkSpace.AlgoTypeLabel.Text = "DES"
+        ElseIf _defaultAlgorism = "TDES" Then
+            WorkSpace.AlgoType = 1
+            WorkSpace.TripleDESToolStripMenuItem.Checked = True
+            WorkSpace.DESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = False
+            WorkSpace.AlgoTypeLabel.Text = "Triple DES"
+        ElseIf _defaultAlgorism = "AESCBC" Then
+            WorkSpace.AlgoType = 2
+            WorkSpace.TripleDESToolStripMenuItem.Checked = False
+            WorkSpace.DESToolStripMenuItem.Checked = False
+            WorkSpace.AESCBCToolStripMenuItem.Checked = True
+            WorkSpace.AlgoTypeLabel.Text = "AES CBC"
+        End If
 
         If Not GetCheckKeyFile() Then
             Dim result = GetNewKey()
             If result = 1 Then Application.Exit()
         End If
 
-        '導入更新服務伺服器位置 Base64處理
-        'Dim UpdateInfoBase64 As String = Nothing
-        'FileOpen(4, Application.StartupPath + "\UpdateInfo.ini", OpenMode.Input)
-        'Input(4, UpdateInfoBase64)
-        'FileClose(4)
-
-        'Dim UpdateInfo As String = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(UpdateInfoBase64))
-
-        'MsgBox(UpdateInfo)
-
-        'Dim IsUpdate = CheckUpdate(UpdateInfo)
-
-        'If IsUpdate <> "0" Then
-        '    Dim r = MessageBox.Show("加密記事本 v" + IsUpdate + "已經釋出，是否更新成最新版?", "有更新版本", MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
-
-        '    If r = DialogResult.OK Then
-        '        '打開加密記事本官網
-        '        Shell("Rundll32.exe url.dll, FileProtocolHandler " & UpdateInfo, vbNormalFocus)
-        '    End If
-        'End If
+        DevInitFunction()
     End Sub
 
     Sub CheckPWD()
@@ -81,8 +83,8 @@ Public Class login
     End Sub
 
     '取得非加密金鑰的函式(5,8)
-    Public Function GetNonEncryptedKey()
-        Return Mid(NonEncryptedKey, 5, 8)
+    Public Function GetNonEncryptedKey(ByVal digit)
+        Return Mid(NonEncryptedKey, 5, digit)
     End Function
 
     Private Sub Login_buttom_Click(sender As Object, e As EventArgs) Handles login_buttom.Click
@@ -96,12 +98,6 @@ Public Class login
             password = pwd_input.Text
             Call CheckPWD()
         End If
-    End Sub
-
-
-
-    Private Sub Login_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'WorkSpace.Close()
     End Sub
 
     Private Sub PwdReset_Click(sender As Object, e As EventArgs) Handles PwdReset.Click
@@ -143,7 +139,7 @@ Public Class login
         '儲存新加密後金鑰(舊使用者密碼)
         Dim Tmp As String = DecryptKey(ReadDESKey(), SHA512hash_String(Old_pwd))
 
-        FileOpen(2, Application.UserAppDataPath + "/app", OpenMode.Output)
+        FileOpen(2, "app", OpenMode.Output)
         PrintLine(2, EncryptKey(Tmp, SHA512hash_String(New_pwd))) '新使用者密碼
         FileClose(2)
 
@@ -154,4 +150,9 @@ Public Class login
         WindowLocation = Me.Location '紀錄視窗修改
         Label1.Text = WindowLocation.ToString
     End Sub
+
+    Function DevInitFunction()
+        Console.WriteLine(Application.UserAppDataPath)
+        Return ""
+    End Function
 End Class

@@ -31,7 +31,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>3.2.0.%2a</ApplicationVersion>
+    <ApplicationVersion>3.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -70,10 +70,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7934D108692FE28235E87214259EF728A90E536A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3E5B7ADBCF896EBCA4CD234D06C185CB7F5268A8</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>加密記事本-New_3_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>加密記事本-New_4_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -119,8 +119,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AES.vb" />
     <Compile Include="ConfigTools.vb" />
+    <Compile Include="EncryptedCore.vb" />
     <Compile Include="IsValidEmail.vb" />
     <Compile Include="KeyTools.vb" />
     <Compile Include="DES.vb" />
@@ -154,6 +154,7 @@
     <Compile Include="ReportPage.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TDES.vb" />
     <Compile Include="WorkSpace.Designer.vb">
       <DependentUpon>WorkSpace.vb</DependentUpon>
     </Compile>
@@ -182,9 +183,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Content Include="language\default">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -219,12 +217,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <Content Include="UpdateInfo.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="加密記事本-New_1_TemporaryKey.pfx" />
     <None Include="加密記事本-New_2_TemporaryKey.pfx" />
     <None Include="加密記事本-New_3_TemporaryKey.pfx" />
+    <None Include="加密記事本-New_4_TemporaryKey.pfx" />
     <None Include="加密記事本-New_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +235,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <PublishFile Include="UpdateInfo.ini">
       <Visible>False</Visible>
@@ -251,6 +248,9 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
+=======
+  <ItemGroup />
+>>>>>>> 54b68cd438142d34b3a9128ed3dc66aec4184ae4
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions>
     <VisualStudio>

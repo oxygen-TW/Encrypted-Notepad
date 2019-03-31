@@ -1,4 +1,5 @@
 {
-  "autosave": "false", 
-  "language": "zh-tw" 
+  "autosave": "false",
+  "language": "zh-tw",
+  "algorism": "DES"
 }
