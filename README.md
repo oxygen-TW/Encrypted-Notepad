@@ -2,7 +2,7 @@
 
 **加密記事本專案**
 <br/>
-**Encrypted-Notepad Project 2017-2018**
+**Encrypted-Notepad Project 2017-2019**
 
 ![image](https://oxygentw.net/files/logo.png)
 
@@ -21,19 +21,17 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.2.0.0
+## Update v3.4.0
 
-1. Fix problem of saving file path.
-2. Integrate user preferences into config file.
-3. Integrate language setting into config file.
-4. Add auto save feature.
+1. Add `AES CBC` encryption algorism & update core to `v3.0`.
+2. Start change code to OOP.
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
 - [Rework](https://github.com/Lukejkw/Rework)
 
 ## RoadMap
-- Add Dynamic language menu.
-- Add auto-save function.
+- Change code style to OOP.
+- Add text number counter.
 - Add Google Drive sync function.
 - Improve safe level of ```Encrypted Core```.

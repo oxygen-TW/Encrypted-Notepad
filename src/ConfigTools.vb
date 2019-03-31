@@ -13,6 +13,7 @@ Module ConfigTools
     '共通變數區
     Public _autosaveFunction As Boolean
     Public _defaultLanguage As String
+    Public _defaultAlgorism As String
 
     Function ReadConfigFile()
         Dim ConfigFile As String
@@ -28,6 +29,7 @@ Module ConfigTools
 
         _autosaveFunction = Convert.ToBoolean(Config_Json.Item("autosave"))
         _defaultLanguage = Config_Json.Item("language").ToString()
+        _defaultAlgorism = Config_Json.Item("algorism").ToString()
 
     End Sub
 
@@ -36,6 +38,8 @@ Module ConfigTools
 
         ConfigJsonDict.Add("autosave", _autosaveFunction)
         ConfigJsonDict.Add("language", _defaultLanguage)
+        ConfigJsonDict.Add("algorism", _defaultAlgorism)
+        Console.WriteLine(_defaultAlgorism)
 
         Dim ConfigJsonOutput = JsonConvert.SerializeObject(ConfigJsonDict, Formatting.Indented)
         Console.WriteLine(ConfigJsonOutput)

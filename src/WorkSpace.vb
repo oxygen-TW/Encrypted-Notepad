@@ -1,5 +1,5 @@
 ﻿'-----------------------------
-'Encryption Notepad v.3.1.0.0 Alpha
+'Encryption Notepad v.3.5.0 Alpha
 'Copyright(C) 2017-2018, 劉子豪
 'All rights reserved   
 '著作權所有，侵害必究
@@ -16,6 +16,9 @@ Public Class WorkSpace
     Public TitleText As String
     Public Untitle As String
     Public AboutMsgBoxTitle As String
+
+    '設定演算法變數 0=DES 1=3DES 2=AES CBC
+    Public AlgoType = 0
 
     Sub SetTitle(ByVal _FileName)
         If ChkFileName = Nothing Then
@@ -203,7 +206,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} Alpha{vbNewLine}編譯日期 2018/12/14{vbNewLine}{vbNewLine}Copyright (C) 2017-2018, Oxygen Studio{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} {login.SoftwareStatus}{vbNewLine}編譯日期 2019/03/27{vbNewLine}{vbNewLine}Copyright (C) 2017-2019, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
@@ -220,6 +223,12 @@ Public Class WorkSpace
 
     Private Sub Inputbox_TextChanged(sender As Object, e As EventArgs) Handles inputbox.TextChanged
         TextModify = True
+        'Dim CountStrExpectSpace As String = inputbox.Text
+        ''MessageBox.Show(CountStrExpectSpace.Split(vbCrLf).Length)
+        'CountStrExpectSpace = CountStrExpectSpace.Replace(vbCrLf, String.Empty)
+        'Console.Write(CountStrExpectSpace)
+        ''MessageBox.Show(CountStrExpectSpace.Split(vbCrLf).Length)
+        'TextLengthLabel.Text = CountStrExpectSpace.Length()
     End Sub
 
     Private Sub Inputbox_ImeChange(sender As Object, e As EventArgs) Handles inputbox.ImeChange
@@ -289,11 +298,11 @@ Public Class WorkSpace
 
     Private Sub 列印檔案ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列印檔案ToolStripMenuItem.Click
         PrintDialog1.Document = PrintDocument1
-        PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
+        'PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
         PrintDialog1.AllowSomePages = True
 
         If PrintDialog1.ShowDialog() = DialogResult.OK Then
-            PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
+            'PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
             '避免檔案無法寫入而程式崩潰
             Try
                 PrintDocument1.Print()
@@ -320,6 +329,7 @@ Public Class WorkSpace
         If ChkFileName <> Nothing Then
             Dim SubFileName As String = IO.Path.GetExtension(ChkFileName) 'Microsoft.VisualBasic.Strings.Right(ChkFileName, 3)
 
+            '演算法選擇由FileProcess決定
             If SubFileName = ".ent" Or SubFileName = ".ENT" Then
                 Call Encrypt_SaveFileFunction(ChkFileName)
                 TextModify = False
@@ -336,8 +346,39 @@ Public Class WorkSpace
 
     End Sub
 
+    Private Sub DESToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DESToolStripMenuItem.Click
+        AlgoType = 0
+        DESToolStripMenuItem.Checked = True
+        TripleDESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = False
+        AlgoTypeLabel.Text = "DES"
+        _defaultAlgorism = "DES"
+        WriteConfigFile() '修改演算法到config
+    End Sub
+
+    Private Sub TripleDESToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TripleDESToolStripMenuItem.Click
+        AlgoType = 1
+        TripleDESToolStripMenuItem.Checked = True
+        DESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = False
+        AlgoTypeLabel.Text = "Triple DES"
+        _defaultAlgorism = "TDES"
+        WriteConfigFile() '修改演算法到config
+    End Sub
+
+    Private Sub AESCBCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AESCBCToolStripMenuItem.Click
+        AlgoType = 2
+        TripleDESToolStripMenuItem.Checked = False
+        DESToolStripMenuItem.Checked = False
+        AESCBCToolStripMenuItem.Checked = True
+        AlgoTypeLabel.Text = "AES CBC"
+        _defaultAlgorism = "AESCBC"
+        WriteConfigFile() '修改演算法到config
+    End Sub
+
     'DEVELOP ONLY! Invisible before release
     Private Sub Testbutton_Click(sender As Object, e As EventArgs) Handles Testbutton.Click
-
+        inputbox.Rtf = inputbox.Text
     End Sub
+
 End Class
