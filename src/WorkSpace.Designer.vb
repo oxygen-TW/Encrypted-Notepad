@@ -26,7 +26,6 @@ Partial Class WorkSpace
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WorkSpace))
         Me.SaveFile = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFile = New System.Windows.Forms.OpenFileDialog()
-        Me.inputbox = New System.Windows.Forms.RichTextBox()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.檔案ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,6 +60,7 @@ Partial Class WorkSpace
         Me.EncryptAlgorismType = New System.Windows.Forms.ToolStripMenuItem()
         Me.DESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TripleDESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AESCBCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.自動儲存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.錯誤回報BetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AllowEncryptAllFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -75,7 +75,8 @@ Partial Class WorkSpace
         Me.Testbutton = New System.Windows.Forms.Button()
         Me.TextLengthLabel = New System.Windows.Forms.Label()
         Me.AlgoTypeLabel = New System.Windows.Forms.Label()
-        Me.AESCBCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.input = New System.Windows.Forms.TextBox()
+        Me.設定時間間隔ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -87,23 +88,6 @@ Partial Class WorkSpace
         'OpenFile
         '
         Me.OpenFile.Filter = "文字文件|*.txt|MD文件|*md|所有檔案|*.*"
-        '
-        'inputbox
-        '
-        Me.inputbox.AcceptsTab = True
-        Me.inputbox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.inputbox.EnableAutoDragDrop = True
-        Me.inputbox.Font = New System.Drawing.Font("微軟正黑體", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.inputbox.HideSelection = False
-        Me.inputbox.Location = New System.Drawing.Point(14, 30)
-        Me.inputbox.Margin = New System.Windows.Forms.Padding(5)
-        Me.inputbox.Name = "inputbox"
-        Me.inputbox.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.inputbox.Size = New System.Drawing.Size(725, 329)
-        Me.inputbox.TabIndex = 0
-        Me.inputbox.Text = ""
         '
         'MenuStrip1
         '
@@ -121,7 +105,7 @@ Partial Class WorkSpace
         Me.檔案ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.開新檔案ToolStripMenuItem, Me.開啟舊檔ToolStripMenuItem, Me.儲存檔案ToolStripMenuItem, Me.另存新檔ToolStripMenuItem, Me.預覽列印ToolStripMenuItem, Me.列印檔案ToolStripMenuItem, Me.ToolStripSeparator1, Me.加密儲存ToolStripMenuItem, Me.解密開啟ToolStripMenuItem})
         Me.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem"
         Me.檔案ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.檔案ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.檔案ToolStripMenuItem.Text = "檔案"
         '
         '開新檔案ToolStripMenuItem
@@ -187,7 +171,7 @@ Partial Class WorkSpace
         '
         Me.內文ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.字型ToolStripMenuItem, Me.顏色ToolStripMenuItem, Me.ToolStripSeparator3, Me.自動換行ToolStripMenuItem, Me.時間戳記ToolStripMenuItem, Me.ToolStripSeparator4, Me.複製ToolStripMenuItem, Me.貼上ToolStripMenuItem, Me.全選ToolStripMenuItem, Me.清除ToolStripMenuItem})
         Me.內文ToolStripMenuItem.Name = "內文ToolStripMenuItem"
-        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.內文ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.內文ToolStripMenuItem.Text = "內文"
         '
         '字型ToolStripMenuItem
@@ -260,14 +244,14 @@ Partial Class WorkSpace
         '
         Me.鎖定ToolStripMenuItem.Name = "鎖定ToolStripMenuItem"
         Me.鎖定ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.鎖定ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.鎖定ToolStripMenuItem.Text = "鎖定"
         '
         '離開ToolStripMenuItem
         '
         Me.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem"
         Me.離開ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.離開ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.離開ToolStripMenuItem.Text = "離開"
         '
         '設定ToolStripMenuItem
@@ -287,25 +271,25 @@ Partial Class WorkSpace
         '繁體中文ToolStripMenuItem
         '
         Me.繁體中文ToolStripMenuItem.Name = "繁體中文ToolStripMenuItem"
-        Me.繁體中文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.繁體中文ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
         Me.繁體中文ToolStripMenuItem.Text = "繁體中文"
         '
         '简体中文ToolStripMenuItem
         '
         Me.简体中文ToolStripMenuItem.Name = "简体中文ToolStripMenuItem"
-        Me.简体中文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.简体中文ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
         Me.简体中文ToolStripMenuItem.Text = "简体中文"
         '
         '英文ToolStripMenuItem
         '
         Me.英文ToolStripMenuItem.Name = "英文ToolStripMenuItem"
-        Me.英文ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.英文ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
         Me.英文ToolStripMenuItem.Text = "English"
         '
         'EspañolToolStripMenuItem
         '
         Me.EspañolToolStripMenuItem.Name = "EspañolToolStripMenuItem"
-        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.EspañolToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
         Me.EspañolToolStripMenuItem.Text = "Español"
         '
         'EncryptAlgorismType
@@ -330,9 +314,16 @@ Partial Class WorkSpace
         Me.TripleDESToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.TripleDESToolStripMenuItem.Text = "Triple DES"
         '
+        'AESCBCToolStripMenuItem
+        '
+        Me.AESCBCToolStripMenuItem.Name = "AESCBCToolStripMenuItem"
+        Me.AESCBCToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.AESCBCToolStripMenuItem.Text = "AES CBC"
+        '
         '自動儲存ToolStripMenuItem
         '
         Me.自動儲存ToolStripMenuItem.CheckOnClick = True
+        Me.自動儲存ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.設定時間間隔ToolStripMenuItem})
         Me.自動儲存ToolStripMenuItem.Name = "自動儲存ToolStripMenuItem"
         Me.自動儲存ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.自動儲存ToolStripMenuItem.Text = "自動儲存"
@@ -353,7 +344,7 @@ Partial Class WorkSpace
         '關於ToolStripMenuItem
         '
         Me.關於ToolStripMenuItem.Name = "關於ToolStripMenuItem"
-        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(51, 23)
+        Me.關於ToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.關於ToolStripMenuItem.Text = "關於"
         '
         'PrintDialog1
@@ -422,21 +413,31 @@ Partial Class WorkSpace
         Me.AlgoTypeLabel.Text = "Triple DES"
         Me.AlgoTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'AESCBCToolStripMenuItem
+        'input
         '
-        Me.AESCBCToolStripMenuItem.Name = "AESCBCToolStripMenuItem"
-        Me.AESCBCToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.AESCBCToolStripMenuItem.Text = "AES CBC"
+        Me.input.AllowDrop = True
+        Me.input.Location = New System.Drawing.Point(12, 28)
+        Me.input.Multiline = True
+        Me.input.Name = "input"
+        Me.input.Size = New System.Drawing.Size(729, 329)
+        Me.input.TabIndex = 14
+        '
+        '設定時間間隔ToolStripMenuItem
+        '
+        Me.設定時間間隔ToolStripMenuItem.Name = "設定時間間隔ToolStripMenuItem"
+        Me.設定時間間隔ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.設定時間間隔ToolStripMenuItem.Text = "設定時間間隔"
         '
         'WorkSpace
         '
+        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(753, 364)
+        Me.Controls.Add(Me.input)
         Me.Controls.Add(Me.AlgoTypeLabel)
         Me.Controls.Add(Me.TextLengthLabel)
         Me.Controls.Add(Me.Testbutton)
-        Me.Controls.Add(Me.inputbox)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("微軟正黑體", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -452,7 +453,6 @@ Partial Class WorkSpace
     End Sub
     Friend WithEvents SaveFile As SaveFileDialog
     Friend WithEvents OpenFile As OpenFileDialog
-    Friend WithEvents inputbox As RichTextBox
     Friend WithEvents FontDialog1 As FontDialog
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents 檔案ToolStripMenuItem As ToolStripMenuItem
@@ -502,4 +502,6 @@ Partial Class WorkSpace
     Friend WithEvents TripleDESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AlgoTypeLabel As Label
     Friend WithEvents AESCBCToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents input As TextBox
+    Friend WithEvents 設定時間間隔ToolStripMenuItem As ToolStripMenuItem
 End Class

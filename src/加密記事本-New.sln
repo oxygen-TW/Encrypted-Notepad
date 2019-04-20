@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "加密記事本-New", "加密記事本-New.vbproj", "{A67AF2BA-E49A-4BB3-8212-2C399D22A415}"
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "WapProjTemplate1", "..\WapProjTemplate1\WapProjTemplate1.wapproj", "{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,24 +27,6 @@ Global
 		{A67AF2BA-E49A-4BB3-8212-2C399D22A415}.Release|x64.Build.0 = Release|Any CPU
 		{A67AF2BA-E49A-4BB3-8212-2C399D22A415}.Release|x86.ActiveCfg = Release|Any CPU
 		{A67AF2BA-E49A-4BB3-8212-2C399D22A415}.Release|x86.Build.0 = Release|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x64.ActiveCfg = Debug|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x64.Build.0 = Debug|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x64.Deploy.0 = Debug|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x86.ActiveCfg = Debug|x86
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x86.Build.0 = Debug|x86
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Debug|x86.Deploy.0 = Debug|x86
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x64.ActiveCfg = Release|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x64.Build.0 = Release|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x64.Deploy.0 = Release|x64
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x86.ActiveCfg = Release|x86
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x86.Build.0 = Release|x86
-		{A35B024B-2E53-41B2-BF6E-C39A705C0BCD}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

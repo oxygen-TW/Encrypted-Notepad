@@ -18,7 +18,7 @@ Module FileProcess
         If _FileName = Nothing Then
             If WorkSpace.SaveFile.ShowDialog <> DialogResult.Cancel Then
                 My.Computer.FileSystem.WriteAllText(WorkSpace.SaveFile.FileName,
-            WorkSpace.inputbox.Text, False)
+            WorkSpace.input.Text, False)
                 _FileName = WorkSpace.SaveFile.FileName
                 Return True
             Else
@@ -31,7 +31,7 @@ Module FileProcess
                 Return True
             Else
                 My.Computer.FileSystem.WriteAllText(_FileName,
-                WorkSpace.inputbox.Text, False)
+                WorkSpace.input.Text, False)
 
                 Return True
             End If
@@ -44,7 +44,7 @@ Module FileProcess
     Sub SaveNewFileFunction(ByRef _FileName)
         If WorkSpace.SaveFile.ShowDialog() = DialogResult.OK Then
             My.Computer.FileSystem.WriteAllText(WorkSpace.SaveFile.FileName,
-            WorkSpace.inputbox.Text, False)
+            WorkSpace.input.Text, False)
 
             _FileName = WorkSpace.SaveFile.FileName
         End If
@@ -53,7 +53,7 @@ Module FileProcess
 
     Sub OpenFileFuntion(ByRef _FileName)
         If WorkSpace.OpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
-            WorkSpace.inputbox.Text = My.Computer.FileSystem.ReadAllText(WorkSpace.OpenFile.
+            WorkSpace.input.Text = My.Computer.FileSystem.ReadAllText(WorkSpace.OpenFile.
             FileName, System.Text.Encoding.Default)
 
             _FileName = WorkSpace.OpenFile.FileName
@@ -62,7 +62,7 @@ Module FileProcess
 
     Sub NewFileFuntion(ByRef _FileName)
         _FileName = Nothing
-        WorkSpace.inputbox.Text = Nothing
+        WorkSpace.input.Text = Nothing
     End Sub
 
     'Encrypt File Function
@@ -74,11 +74,11 @@ Module FileProcess
         '處理加密演算法選擇，日後將移除
         Dim SaveText As String = Nothing
         If WorkSpace.AlgoType = 0 Then
-            SaveText = DES_Encrypt(WorkSpace.inputbox.Text, DES_Key)
+            SaveText = DES_Encrypt(WorkSpace.input.Text, DES_Key)
         ElseIf WorkSpace.AlgoType = 1 Then
-            SaveText = TDES_Encrypt(WorkSpace.inputbox.Text, TDES_Key, GenerateIV())
+            SaveText = TDES_Encrypt(WorkSpace.input.Text, TDES_Key, GenerateIV())
         ElseIf WorkSpace.AlgoType = 2 Then
-            SaveText = Encrypter.AESE_CBC(Encrypter.Base64E(WorkSpace.inputbox.Text), AES_Key)
+            SaveText = Encrypter.AESE_CBC(Encrypter.Base64E(WorkSpace.input.Text), AES_Key)
         End If
 
         If _FileName = Nothing Then
@@ -113,13 +113,13 @@ Module FileProcess
         If WorkSpace.AlgoType = 0 Then
             If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
                 Try
-                    WorkSpace.inputbox.Text = DES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
+                    WorkSpace.input.Text = DES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
             FileName, Text.Encoding.Default), DES_Key)
 
                     _FileName = WorkSpace.DESOpenFile.FileName
                 Catch ex As Exception
                     MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰，請檢查加密演算法是否正確", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    WorkSpace.inputbox.Text = "解密失敗"
+                    WorkSpace.input.Text = "解密失敗"
                     _FileName = Nothing
                 End Try
 
@@ -127,26 +127,26 @@ Module FileProcess
         ElseIf WorkSpace.AlgoType = 1 Then
             If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
                 Try
-                    WorkSpace.inputbox.Text = TDES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
+                    WorkSpace.input.Text = TDES_Decrypt(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
             FileName, Text.Encoding.Default), TDES_Key, GenerateIV())
 
                     _FileName = WorkSpace.DESOpenFile.FileName
                 Catch ex As Exception
                     MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰，請檢查加密演算法是否正確", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    WorkSpace.inputbox.Text = "解密失敗"
+                    WorkSpace.input.Text = "解密失敗"
                     _FileName = Nothing
                 End Try
             End If
         ElseIf WorkSpace.AlgoType = 2 Then
             If WorkSpace.DESOpenFile.ShowDialog = System.Windows.Forms.DialogResult.OK Then
                 Try
-                    WorkSpace.inputbox.Text = Encrypter.Base64D(Encrypter.AESD_CBC(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
+                    WorkSpace.input.Text = Encrypter.Base64D(Encrypter.AESD_CBC(My.Computer.FileSystem.ReadAllText(WorkSpace.DESOpenFile.
             FileName, Text.Encoding.Default), AES_Key))
 
                     _FileName = WorkSpace.DESOpenFile.FileName
                 Catch ex As Exception
                     MessageBox.Show("無法進行解密" & vbNewLine & "可能金鑰錯誤或沒有金鑰，請檢查加密演算法是否正確", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    WorkSpace.inputbox.Text = "解密失敗"
+                    WorkSpace.input.Text = "解密失敗"
                     _FileName = Nothing
                 End Try
             End If

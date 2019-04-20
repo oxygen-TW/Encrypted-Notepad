@@ -14,6 +14,7 @@ Module ConfigTools
     Public _autosaveFunction As Boolean
     Public _defaultLanguage As String
     Public _defaultAlgorism As String
+    Public _autoSaveInterval As Integer
 
     Function ReadConfigFile()
         Dim ConfigFile As String
@@ -30,7 +31,7 @@ Module ConfigTools
         _autosaveFunction = Convert.ToBoolean(Config_Json.Item("autosave"))
         _defaultLanguage = Config_Json.Item("language").ToString()
         _defaultAlgorism = Config_Json.Item("algorism").ToString()
-
+        _autoSaveInterval = Config_Json.Item("autosaveInterval")
     End Sub
 
     Sub WriteConfigFile()
@@ -39,6 +40,7 @@ Module ConfigTools
         ConfigJsonDict.Add("autosave", _autosaveFunction)
         ConfigJsonDict.Add("language", _defaultLanguage)
         ConfigJsonDict.Add("algorism", _defaultAlgorism)
+        ConfigJsonDict.Add("autosaveInterval", _autoSaveInterval)
         Console.WriteLine(_defaultAlgorism)
 
         Dim ConfigJsonOutput = JsonConvert.SerializeObject(ConfigJsonDict, Formatting.Indented)

@@ -11,6 +11,7 @@ Public Class WorkSpace
     Dim ChkFileName = Nothing
     Dim TextModify As Boolean = False
     Dim AutoNewLine As Boolean = True
+    Dim AutoSaveInterval As Integer = 0
 
     '語言設定變數
     Public TitleText As String
@@ -19,6 +20,20 @@ Public Class WorkSpace
 
     '設定演算法變數 0=DES 1=3DES 2=AES CBC
     Public AlgoType = 0
+
+    Private Sub WorkSpace_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.Location = login.WindowLocation
+        LoadConfigFile() '讀取使用者設定
+
+        '開始套用使用者設定
+        Call SetTitle(ChkFileName)
+        自動儲存ToolStripMenuItem.Checked = ConfigTools._autosaveFunction
+        AutoSaveTimer.Enabled = ConfigTools._autosaveFunction
+        WriteConfigFile()
+        AutoSaveInterval = ConfigTools._autoSaveInterval * 1000 'Convert to Second
+        AutoSaveTimer.Interval = AutoSaveInterval
+
+    End Sub
 
     Sub SetTitle(ByVal _FileName)
         If ChkFileName = Nothing Then
@@ -105,12 +120,12 @@ Public Class WorkSpace
     End Sub
 
     Private Sub TimeStampToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 時間戳記ToolStripMenuItem.Click
-        inputbox.Text += Now().ToString & vbNewLine
+        input.Text += Now().ToString & vbNewLine
     End Sub
 
     Private Sub FontToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 字型ToolStripMenuItem.Click
         If FontDialog1.ShowDialog() = DialogResult.OK Then
-            inputbox.Font = FontDialog1.Font
+            input.Font = FontDialog1.Font
         End If
     End Sub
 
@@ -178,31 +193,31 @@ Public Class WorkSpace
     End Sub
 
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 清除ToolStripMenuItem.Click
-        inputbox.Text = Nothing
+        input.Text = Nothing
     End Sub
 
     Private Sub AutoNewLineToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 自動換行ToolStripMenuItem.Click
         AutoNewLine = Not AutoNewLine
-        inputbox.WordWrap = AutoNewLine
+        input.WordWrap = AutoNewLine
         自動換行ToolStripMenuItem.Checked = AutoNewLine
     End Sub
 
     Private Sub ColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 顏色ToolStripMenuItem.Click
         If ColorDialog1.ShowDialog() <> DialogResult.Cancel Then
-            inputbox.ForeColor = ColorDialog1.Color
+            input.ForeColor = ColorDialog1.Color
         End If
     End Sub
 
     Private Sub 全選ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 全選ToolStripMenuItem.Click
-        inputbox.SelectAll()
+        input.SelectAll()
     End Sub
 
     Private Sub 複製ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 複製ToolStripMenuItem.Click
-        inputbox.Copy()
+        input.Copy()
     End Sub
 
     Private Sub 貼上ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 貼上ToolStripMenuItem.Click
-        inputbox.Paste()
+        input.Paste()
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
@@ -210,18 +225,7 @@ Public Class WorkSpace
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
-    Private Sub WorkSpace_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Me.Location = login.WindowLocation
-        LoadConfigFile() '讀取使用者設定
-
-        '開始套用使用者設定
-        Call SetTitle(ChkFileName)
-        自動儲存ToolStripMenuItem.Checked = ConfigTools._autosaveFunction
-        WriteConfigFile()
-
-    End Sub
-
-    Private Sub Inputbox_TextChanged(sender As Object, e As EventArgs) Handles inputbox.TextChanged
+    Private Sub Inputbox_TextChanged(sender As Object, e As EventArgs) Handles input.TextChanged
         TextModify = True
         'Dim CountStrExpectSpace As String = inputbox.Text
         ''MessageBox.Show(CountStrExpectSpace.Split(vbCrLf).Length)
@@ -231,9 +235,9 @@ Public Class WorkSpace
         'TextLengthLabel.Text = CountStrExpectSpace.Length()
     End Sub
 
-    Private Sub Inputbox_ImeChange(sender As Object, e As EventArgs) Handles inputbox.ImeChange
-        inputbox.ImeMode = ImeMode.OnHalf
-    End Sub
+    'Private Sub Inputbox_ImeChange(sender As Object, e As EventArgs) Handles input.ImeChange
+    '    input.ImeMode = ImeMode.OnHalf
+    'End Sub
 
     Private Sub 繁體中文ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 繁體中文ToolStripMenuItem.Click
         Call ChangeLanguage("zh-tw")
@@ -280,15 +284,15 @@ Public Class WorkSpace
     '列印參數相同於inputbox的字型、顏色
     'Ref: https://bbs.csdn.net/topics/240042309
     Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        Static myBrush = New SolidBrush(inputbox.ForeColor)
+        Static myBrush = New SolidBrush(input.ForeColor)
         Static limit As Integer
         Dim n, L As Integer
         Dim sFmt As New StringFormat(StringFormatFlags.LineLimit)
-        e.Graphics.MeasureString(Mid(inputbox.Text, limit + 1), inputbox.Font, e.MarginBounds.Size, sFmt, n, L)
-        e.Graphics.DrawString(Mid(inputbox.Text, limit + 1, n), inputbox.Font, myBrush, e.MarginBounds)
+        e.Graphics.MeasureString(Mid(input.Text, limit + 1), input.Font, e.MarginBounds.Size, sFmt, n, L)
+        e.Graphics.DrawString(Mid(input.Text, limit + 1, n), input.Font, myBrush, e.MarginBounds)
         limit += n
 
-        If limit < inputbox.Text.Length Then
+        If limit < input.Text.Length Then
             e.HasMorePages = True
         Else
             e.HasMorePages = False
@@ -325,7 +329,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub AutoSaveTimer_Tick(sender As Object, e As EventArgs) Handles AutoSaveTimer.Tick
-
+        Console.WriteLine(AutoSaveTimer.Interval)
         If ChkFileName <> Nothing Then
             Dim SubFileName As String = IO.Path.GetExtension(ChkFileName) 'Microsoft.VisualBasic.Strings.Right(ChkFileName, 3)
 
@@ -378,7 +382,90 @@ Public Class WorkSpace
 
     'DEVELOP ONLY! Invisible before release
     Private Sub Testbutton_Click(sender As Object, e As EventArgs) Handles Testbutton.Click
-        inputbox.Rtf = inputbox.Text
+        'input.Rtf = input.Text
     End Sub
 
+    Private Sub 設定時間間隔ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 設定時間間隔ToolStripMenuItem.Click
+        Dim NewTimerInterval = InputBox("請輸入自動儲存時間間隔(秒)", "自動儲存設定", "60")
+
+        If NewTimerInterval = "" Then
+            Exit Sub
+        Else
+            AutoSaveInterval = Int(NewTimerInterval) * 1000 'Convert to Second
+            '寫入Config File
+            ConfigTools._autoSaveInterval = AutoSaveInterval
+            WriteConfigFile()
+
+            '修改計時器間隔
+            AutoSaveTimer.Interval = AutoSaveInterval
+            Console.WriteLine("Timer interval = " & AutoSaveTimer.Interval.ToString)
+        End If
+
+    End Sub
+
+    'Private Sub input_DragDrop(sender As Object, e As DragEventArgs) Handles input.DragDrop
+    '    Dim DragFilePath As String = CType(e.Data.GetData("FileNameW"), Array).GetValue(0)
+    '    MsgBox(DragFilePath)
+    '    Dim SubFileName As String = IO.Path.GetExtension(DragFilePath)
+
+    '    If TextModify Then
+    '        Dim result As DialogResult = Nothing
+    '        result = MessageBox.Show("即將離開程式，是否存儲存修改?", "存檔?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk)
+
+    '        If result = DialogResult.Yes Then
+    '            If Not SaveFileFunction(ChkFileName) Then
+    '                'Exit Sub
+    '            End If
+
+    '            If SubFileName = ".ent" Or SubFileName = ".ENT" Then
+
+    '                TextModify = False
+    '                Console.WriteLine("Call Encrypted open")
+    '            Else
+    '                input.Text = My.Computer.FileSystem.ReadAllText(DragFilePath, System.Text.Encoding.Default)
+    '                TextModify = False
+    '                Console.WriteLine("Call Normal open")
+    '            End If
+
+    '            ChkFileName = DragFilePath
+    '            Call SetTitle(ChkFileName)
+
+    '        ElseIf result = DialogResult.No Then
+
+    '            If SubFileName = ".ent" Or SubFileName = ".ENT" Then
+    '                Call Decrypt_OpenFileFunction(DragFilePath)
+    '                TextModify = False
+    '                Console.WriteLine("Call Encrypted open")
+    '            Else
+    '                Call OpenFileFuntion(DragFilePath)
+    '                TextModify = False
+    '                Console.WriteLine("Call Normal open")
+    '            End If
+
+    '            ChkFileName = DragFilePath
+    '            Call SetTitle(ChkFileName)
+
+    '        ElseIf result = DialogResult.Cancel Then
+    '            Exit Sub
+    '        End If
+    '    Else
+    '        If SubFileName = ".ent" Or SubFileName = ".ENT" Then
+    '            Call Decrypt_OpenFileFunction(DragFilePath)
+    '            TextModify = False
+    '            Console.WriteLine("Call Encrypted open")
+    '        Else
+    '            Call OpenFileFuntion(DragFilePath)
+    '            TextModify = False
+    '            Console.WriteLine("Call Normal open")
+    '        End If
+
+    '        ChkFileName = DragFilePath
+    '        Call SetTitle(ChkFileName)
+    '    End If
+    'End Sub
+
+    'Private Sub input_DragEnter(sender As Object, e As DragEventArgs) Handles input.DragEnter
+    '    e.Effect = DragDropEffects.All
+    '    SetTitle(ChkFileName)
+    'End Sub
 End Class

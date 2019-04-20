@@ -1,5 +1,6 @@
 {
-  "autosave": "false",
+  "autosave": "true",
+  "autosaveInterval":"10",
   "language": "zh-tw",
   "algorism": "DES"
 }

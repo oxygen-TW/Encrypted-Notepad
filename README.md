@@ -21,10 +21,10 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.4.0
+## Update v3.5.0
 
-1. Add `AES CBC` encryption algorism & update core to `v3.0`.
-2. Start change code to OOP.
+1. Add "search via google" function.
+2. It can change auto save interval now.
 
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
