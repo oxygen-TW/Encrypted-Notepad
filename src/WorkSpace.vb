@@ -206,7 +206,7 @@ Public Class WorkSpace
     End Sub
 
     Private Sub 關於ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 關於ToolStripMenuItem.Click
-        Dim AboutText As String = $"加密書寫系統 v{login.Version} {login.SoftwareStatus}{vbNewLine}編譯日期 2019/03/27{vbNewLine}{vbNewLine}Copyright (C) 2017-2019, Oxygen Studio{vbNewLine}All rights reserved "
+        Dim AboutText As String = $"加密書寫系統 v{login.Version} {login.SoftwareStatus}{vbNewLine}編譯日期 2019/10/10{vbNewLine}{vbNewLine}Copyright (C) 2017-2019, Oxygen Studio{vbNewLine}All rights reserved "
         MessageBox.Show(AboutText, AboutMsgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
@@ -217,18 +217,15 @@ Public Class WorkSpace
         '開始套用使用者設定
         Call SetTitle(ChkFileName)
         自動儲存ToolStripMenuItem.Checked = ConfigTools._autosaveFunction
+        統計字數ToolStripMenuItem.Checked = ConfigTools._defaultCount
+        TextLengthLabel.Visible = ConfigTools._defaultCount
         WriteConfigFile()
 
     End Sub
 
     Private Sub Inputbox_TextChanged(sender As Object, e As EventArgs) Handles inputbox.TextChanged
         TextModify = True
-        'Dim CountStrExpectSpace As String = inputbox.Text
-        ''MessageBox.Show(CountStrExpectSpace.Split(vbCrLf).Length)
-        'CountStrExpectSpace = CountStrExpectSpace.Replace(vbCrLf, String.Empty)
-        'Console.Write(CountStrExpectSpace)
-        ''MessageBox.Show(CountStrExpectSpace.Split(vbCrLf).Length)
-        'TextLengthLabel.Text = CountStrExpectSpace.Length()
+        TextLengthLabel.Text = "字數：" & Len(inputbox.Text).ToString
     End Sub
 
     Private Sub Inputbox_ImeChange(sender As Object, e As EventArgs) Handles inputbox.ImeChange
@@ -381,4 +378,16 @@ Public Class WorkSpace
         inputbox.Rtf = inputbox.Text
     End Sub
 
+    Private Sub 統計字數ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 統計字數ToolStripMenuItem.Click
+        _defaultCount = Not (_defaultCount)
+
+        If Not (_defaultCount) Then
+            TextLengthLabel.Visible = False
+        Else
+            TextLengthLabel.Visible = True
+        End If
+
+        '寫入config
+        WriteConfigFile()
+    End Sub
 End Class

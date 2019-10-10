@@ -8,7 +8,7 @@
 Public Class login
 
     ''' 重要! 版本管理定義常數 '''
-    Public Const Version = "3.4.0"
+    Public Const Version = "3.6.0"
     Public Const SoftwareStatus = "Beta"
 
     Public password As String = "0000"
