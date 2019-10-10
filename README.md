@@ -21,9 +21,9 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.4.0
+## Update v3.6.0
 
-1. Add `AES CBC` encryption algorism & update core to `v3.0`.
+1. Add counter.
 2. Start change code to OOP.
 
 ## Dependence
