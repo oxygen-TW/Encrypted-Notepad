@@ -15,4 +15,4 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - working-directory: "src"
+    - working-directory: ./src
