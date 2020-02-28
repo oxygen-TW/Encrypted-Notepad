@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' 檢閱組件屬性的值
 
-<Assembly: AssemblyTitle("加密記事本-New")>
+<Assembly: AssemblyTitle("加密記事本")>
 <Assembly: AssemblyDescription("安全的可加密記事本")>
 <Assembly: AssemblyCompany("oxygen studio")>
 <Assembly: AssemblyProduct("加密記事本-New")>
-<Assembly: AssemblyCopyright("Copyright ©  2017")>
+<Assembly: AssemblyCopyright("Copyright ©  2020")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' 指定為預設值: 
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("3.6.1.0")>
+<Assembly: AssemblyFileVersion("3.6.1.0")>
