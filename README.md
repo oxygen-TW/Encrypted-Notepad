@@ -5,7 +5,7 @@
 **Encrypted-Notepad Project 2017-2020**
 
 ![image](https://oxygentw.net/files/logo.png)
-
+ 
 ## How to download?
 - Visit our release https://github.com/oxygen-TW/Encrypted-Notepad/releases
 - SourceForge: https://sourceforge.net/projects/encryption-notepad/
