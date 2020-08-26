@@ -390,4 +390,46 @@ Public Class WorkSpace
         '寫入config
         WriteConfigFile()
     End Sub
+
+    Private Sub 匯出金鑰ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 匯出金鑰ToolStripMenuItem1.Click
+        Dim Passwd = ""
+        Passwd = Interaction.InputBox("請輸入使用者密碼", "輸入使用者密碼", "User password", 420, 220)
+
+        If Passwd = Nothing Then
+            Exit Sub
+        End If
+
+        Dim NonEncryptedKey = ""
+        Try
+            NonEncryptedKey = DecryptKey(ReadDESKey(), SHA512hash_String(Passwd))
+        Catch ex As Exception
+            MessageBox.Show("密碼錯誤", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub '離開登入程序
+        End Try
+
+        If ExportKeyFileDialog.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+            My.Computer.FileSystem.WriteAllText(ExportKeyFileDialog.FileName, NonEncryptedKey, False)
+        End If
+
+        MessageBox.Show("匯出完成", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub 匯入金鑰ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 匯入金鑰ToolStripMenuItem.Click
+
+        Dim NonEncryptedKey = ""
+        If ImportKeyFileDialog.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+            NonEncryptedKey = My.Computer.FileSystem.ReadAllText(ImportKeyFileDialog.FileName, System.Text.Encoding.Default)
+        End If
+
+        Dim Passwd = ""
+        Passwd = Interaction.InputBox("請輸入使用者密碼", "輸入使用者密碼", "User password", 420, 220)
+
+        If Passwd = Nothing Then
+            Exit Sub
+        End If
+
+        If Not (login.CheckPWD(Passwd)) Then
+
+        End If
+    End Sub
 End Class

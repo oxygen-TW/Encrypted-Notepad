@@ -2,7 +2,7 @@
 
 **加密記事本專案**
 <br/>
-**Encrypted-Notepad Project 2017-2019**
+**Encrypted-Notepad Project 2017-2020**
 
 ![image](https://oxygentw.net/files/logo.png)
 
@@ -29,9 +29,8 @@
 ## Dependence
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
 - [Rework](https://github.com/Lukejkw/Rework)
+- [icon](https://www.flaticon.com/free-icon/notebook_2312113?term=lock%20notebook&page=1&position=16)
 
-## RoadMap
-- Change code style to OOP.
-- Add text number counter.
-- Add Google Drive sync function.
-- Improve safe level of ```Encrypted Core```.
+## ToDo before final update
+- [ ] Add key tools for export and import.
+- [ ] Add Google Drive sync function.

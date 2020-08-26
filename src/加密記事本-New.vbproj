@@ -72,10 +72,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>3E5B7ADBCF896EBCA4CD234D06C185CB7F5268A8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>12DFA99C82D329E9DD3EA2881FA045963CB1683C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>加密記事本-New_4_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>加密記事本-New_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -223,6 +223,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
+    <None Include="加密記事本-New_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

@@ -66,6 +66,7 @@ Partial Class WorkSpace
         Me.錯誤回報BetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AllowEncryptAllFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.統計字數ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.匯出金鑰ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.關於ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
@@ -77,6 +78,10 @@ Partial Class WorkSpace
         Me.Testbutton = New System.Windows.Forms.Button()
         Me.TextLengthLabel = New System.Windows.Forms.Label()
         Me.AlgoTypeLabel = New System.Windows.Forms.Label()
+        Me.匯出金鑰ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.匯入金鑰ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportKeyFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.ImportKeyFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -273,7 +278,7 @@ Partial Class WorkSpace
         '
         '設定ToolStripMenuItem
         '
-        Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.語言ToolStripMenuItem, Me.EncryptAlgorismType, Me.自動儲存ToolStripMenuItem, Me.錯誤回報BetaToolStripMenuItem, Me.AllowEncryptAllFileToolStripMenuItem, Me.統計字數ToolStripMenuItem})
+        Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.語言ToolStripMenuItem, Me.EncryptAlgorismType, Me.自動儲存ToolStripMenuItem, Me.錯誤回報BetaToolStripMenuItem, Me.AllowEncryptAllFileToolStripMenuItem, Me.統計字數ToolStripMenuItem, Me.匯出金鑰ToolStripMenuItem})
         Me.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem"
         Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(53, 23)
         Me.設定ToolStripMenuItem.Text = "設定"
@@ -282,7 +287,7 @@ Partial Class WorkSpace
         '
         Me.語言ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.繁體中文ToolStripMenuItem, Me.简体中文ToolStripMenuItem, Me.英文ToolStripMenuItem, Me.EspañolToolStripMenuItem})
         Me.語言ToolStripMenuItem.Name = "語言ToolStripMenuItem"
-        Me.語言ToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.語言ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.語言ToolStripMenuItem.Text = "語言"
         '
         '繁體中文ToolStripMenuItem
@@ -313,7 +318,7 @@ Partial Class WorkSpace
         '
         Me.EncryptAlgorismType.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DESToolStripMenuItem, Me.TripleDESToolStripMenuItem, Me.AESCBCToolStripMenuItem})
         Me.EncryptAlgorismType.Name = "EncryptAlgorismType"
-        Me.EncryptAlgorismType.Size = New System.Drawing.Size(212, 26)
+        Me.EncryptAlgorismType.Size = New System.Drawing.Size(224, 26)
         Me.EncryptAlgorismType.Text = "加密演算法"
         '
         'DESToolStripMenuItem
@@ -341,20 +346,20 @@ Partial Class WorkSpace
         '
         Me.自動儲存ToolStripMenuItem.CheckOnClick = True
         Me.自動儲存ToolStripMenuItem.Name = "自動儲存ToolStripMenuItem"
-        Me.自動儲存ToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.自動儲存ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.自動儲存ToolStripMenuItem.Text = "自動儲存"
         '
         '錯誤回報BetaToolStripMenuItem
         '
         Me.錯誤回報BetaToolStripMenuItem.Name = "錯誤回報BetaToolStripMenuItem"
-        Me.錯誤回報BetaToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.錯誤回報BetaToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.錯誤回報BetaToolStripMenuItem.Text = "傳送建議"
         '
         'AllowEncryptAllFileToolStripMenuItem
         '
         Me.AllowEncryptAllFileToolStripMenuItem.CheckOnClick = True
         Me.AllowEncryptAllFileToolStripMenuItem.Name = "AllowEncryptAllFileToolStripMenuItem"
-        Me.AllowEncryptAllFileToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.AllowEncryptAllFileToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.AllowEncryptAllFileToolStripMenuItem.Text = "允許加密非文字檔"
         '
         '統計字數ToolStripMenuItem
@@ -363,8 +368,15 @@ Partial Class WorkSpace
         Me.統計字數ToolStripMenuItem.CheckOnClick = True
         Me.統計字數ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.統計字數ToolStripMenuItem.Name = "統計字數ToolStripMenuItem"
-        Me.統計字數ToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.統計字數ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.統計字數ToolStripMenuItem.Text = "統計字數"
+        '
+        '匯出金鑰ToolStripMenuItem
+        '
+        Me.匯出金鑰ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.匯出金鑰ToolStripMenuItem1, Me.匯入金鑰ToolStripMenuItem})
+        Me.匯出金鑰ToolStripMenuItem.Name = "匯出金鑰ToolStripMenuItem"
+        Me.匯出金鑰ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.匯出金鑰ToolStripMenuItem.Text = "金鑰管理"
         '
         '關於ToolStripMenuItem
         '
@@ -437,6 +449,28 @@ Partial Class WorkSpace
         Me.AlgoTypeLabel.TabIndex = 13
         Me.AlgoTypeLabel.Text = "Triple DES"
         Me.AlgoTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        '匯出金鑰ToolStripMenuItem1
+        '
+        Me.匯出金鑰ToolStripMenuItem1.Name = "匯出金鑰ToolStripMenuItem1"
+        Me.匯出金鑰ToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.匯出金鑰ToolStripMenuItem1.Text = "匯出金鑰"
+        '
+        '匯入金鑰ToolStripMenuItem
+        '
+        Me.匯入金鑰ToolStripMenuItem.Name = "匯入金鑰ToolStripMenuItem"
+        Me.匯入金鑰ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.匯入金鑰ToolStripMenuItem.Text = "匯入金鑰"
+        '
+        'ExportKeyFileDialog
+        '
+        Me.ExportKeyFileDialog.DefaultExt = "entkey"
+        Me.ExportKeyFileDialog.Filter = """加密記事本金鑰檔|*.entkey"
+        '
+        'ImportKeyFileDialog
+        '
+        Me.ImportKeyFileDialog.DefaultExt = "entkey"
+        Me.ImportKeyFileDialog.Filter = """加密記事本金鑰檔|*.entkey"
         '
         'WorkSpace
         '
@@ -513,4 +547,9 @@ Partial Class WorkSpace
     Friend WithEvents AlgoTypeLabel As Label
     Friend WithEvents AESCBCToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 統計字數ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 匯出金鑰ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 匯出金鑰ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents 匯入金鑰ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExportKeyFileDialog As SaveFileDialog
+    Friend WithEvents ImportKeyFileDialog As SaveFileDialog
 End Class
