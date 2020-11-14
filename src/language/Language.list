@@ -1,9 +1,0 @@
-{
-  "version": "1.0",
-  "install": [
-	"en-us",
-	"zh-tw",
-	"zh-cn",
-	"es"
-  ]
-}
