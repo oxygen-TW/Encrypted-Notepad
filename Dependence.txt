@@ -1,7 +1,0 @@
-Install-Package:
-
-Rework
-Newtonsoft.Json
-
-Icon:
-https://www.flaticon.com/free-icon/notebook_2312113?term=lock%20notebook&page=1&position=16
