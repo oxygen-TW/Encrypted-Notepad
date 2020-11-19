@@ -63,6 +63,9 @@ class NotepadUI(QMainWindow):
         openFileAction.setShortcut(QKeySequence.Open)
         openFileAction.triggered.connect(self.OpenFile)
 
+        newFileAction = self.__createAction(self, "New File", "new file", self.NewFile)
+        newFileAction.setShortcut(QKeySequence("Ctrl+N"))
+
         saveFileAction = self.__createAction(self, "Save File", "save file", self.SaveFile)
         saveFileAction.setShortcut(QKeySequence.Save)
 
@@ -70,7 +73,7 @@ class NotepadUI(QMainWindow):
         saveFileAsAction.setShortcut(QKeySequence("Ctrl+Shift+S"))
 
         #Add Action to Menu
-        file_menu.addActions([openFileAction, saveFileAction, saveFileAsAction])
+        file_menu.addActions([newFileAction, openFileAction, saveFileAction, saveFileAsAction])
 
         file_menu.addSeparator()
 
@@ -123,7 +126,17 @@ class NotepadUI(QMainWindow):
         select_all_action.setShortcut(QKeySequence.SelectAll)
  
         edit_menu.addActions([cut_action, copy_action, paste_action, select_all_action])
-                
+
+        other_menu = self.menuBar().addMenu('&Other')
+
+        lock_action = self.__createAction(self, 'Lock', 'Lock', self.lock())
+        lock_action.setShortcut(QKeySequence("Ctrl+L"))
+
+        other_menu.addActions([lock_action])
+
+    def NewFile(self):
+        pass
+
     def OpenFile(self):
         path, _ = QFileDialog.getOpenFileName(
             parent = self,
@@ -197,7 +210,7 @@ class NotepadUI(QMainWindow):
     def print_file(self):
         printDialog = QPrintDialog()
         if printDialog.exec_():
-            self.editor.print_(printDialog.printer())
+            self.mainEditor.print_(printDialog.printer())
 
     def toggle_wrap_text(self):
         self.editor.setLineWrapMode(not self.mainEditor.lineWrapMode())
@@ -259,6 +272,11 @@ class NotepadUI(QMainWindow):
                 self.update_title()
                 self.c.config["program"]["lastDir"] = os.path.dirname(self.path)
                 self.c.update()
+
+    def lock(self):
+        self.userKey = "" #delete key
+        self.authWin = self.AuthPageUI()
+        self.close()
 
  
 
