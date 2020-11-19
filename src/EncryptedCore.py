@@ -4,6 +4,9 @@ from hashlib import md5, sha512
 from base64 import b64encode, b64decode
 
 #Ref https://gist.github.com/Frizz925/ac0fb026314807959db5685ac149ed67
+def convertPasspharse(passpharse):
+    return b64encode(md5(passpharse.encode('utf-8')).hexdigest().encode('utf-8')).decode('utf-8')
+
 class EncryptedCore():
 
     def AESCBCencrypt(self, text, key):
@@ -32,19 +35,7 @@ class EncryptedCore():
     def HashSHA512(self, text):
         return sha512(text.encode("utf-8")).hexdigest().encode("utf-8")
 
-    def __pad(self, text):
-        while len(text) % 16 != 0:
-            text  += b' '
-            return text
-
-    def __pad_key(self, key):
-        while len(key) % 16 != 0:
-            key  += b' '
-            return key
-
 #Debug only
 if __name__ == "__main__":
-    ec = EncryptedCore()
-    r = ec.AESCBCencrypt("中文", "1234678")
-    ec.AESCBCdecrypt(r[1], r[0], r[2])
-    print(ec.HashSHA512("123"))
+    e = EncryptedCore()
+    print(e.AESCBCencrypt("12345", "0000"))

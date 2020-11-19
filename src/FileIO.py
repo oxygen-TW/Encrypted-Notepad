@@ -11,7 +11,7 @@ class EncryptedFlieIO(EncryptedCore):
             t = super().AESCBCencrypt(text, key)
             etext = t[1]
             iv = t[2]
-
+            print("e={} iv={}".format(etext, iv))
             text = etext+"::"+iv
             f.write(text)
             f.close()
@@ -22,7 +22,7 @@ class EncryptedFlieIO(EncryptedCore):
             etext = f.read()
             f.close()
             t = etext.split("::")
-            
+            print("e={} iv={}".format(t[0], t[1]))
             text = super().AESCBCdecrypt(t[0], key, t[1])
             return text
         

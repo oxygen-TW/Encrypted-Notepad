@@ -1,15 +1,1 @@
-{
-    "comment--1":"Config file. First Letter use lower case!",
-    "main":{
-        "version":"dev",
-        "encryptedCoreVersion":"3.0-dev",
-        "buildTime":"N/A",
-        "Author":"Howard, Liu"
-    },
-    "program":{
-        "encryptedMode": "AESCBC"
-    },
-    "UI":{
-        "fontSize":12
-    }
-}
+{"comment--1": "Config file. First Letter use lower case!", "main": {"version": "dev", "encryptedCoreVersion": "3.0-dev", "buildTime": "N/A", "Author": "Howard, Liu"}, "program": {"encryptedMode": "AESCBC", "lastDir": "D:/Programming/Projects/Encrypted-Notepad/src/test"}, "UI": {"fontSize": 12}}
