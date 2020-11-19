@@ -1,11 +1,7 @@
 import sys, os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
-from PyQt5.QtWidgets import QPushButton, QLabel, QPlainTextEdit, QStatusBar, QToolBar
-from PyQt5.QtWidgets import QLineEdit, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
+from PyQt5.QtGui import  QKeySequence
 
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QFontDatabase, QIcon, QKeySequence
-from PyQt5.QtPrintSupport import QPrintDialog
 
 from mainUI import NotepadUI
 from authPageUI import Ui_AuthPageUI
@@ -35,12 +31,42 @@ class AuthPageUI(QMainWindow, Ui_AuthPageUI):
         self.switchToMainPage(userInput)
 
     def resetPassword(self):
-        print("reset")
+        userpasswd = self.__showDialog("Reset password", "Input password")
+        kt = keytool()
+        if(kt.ReadKey() != convertPasspharse(userpasswd)):
+            self.__dialog_message("Failed to Auth")
+            return False
+        
+        newPasswd = self.__showDialog("Reset password", "Input new password")
+        newPasswd_again = self.__showDialog("Reset password", "Input new password again")
+
+        if(newPasswd != newPasswd_again):
+            self.__dialog_message("New password does not match")
+            return False
+
+        newPasswd = convertPasspharse(newPasswd)
+        kt.WriteKey(newPasswd)
+        dlg = QMessageBox(self)
+        dlg.setText("Reset password success!")
+        dlg.setIcon(QMessageBox.Information)
+        dlg.show()
+        return True
 
     def switchToMainPage(self, userInput):
         self.mainPage = NotepadUI(userInput)
         self.mainPage.show()
         self.close()
+
+    def __dialog_message(self, message):
+        dlg = QMessageBox(self)
+        dlg.setText(message)
+        dlg.setIcon(QMessageBox.Critical)
+        dlg.show()
+
+    def __showDialog(self, title, dialogText):
+        text, ok = QInputDialog.getText(self, title, dialogText)
+        if ok:
+            return str(text)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

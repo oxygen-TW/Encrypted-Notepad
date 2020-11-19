@@ -21,7 +21,8 @@ class NotepadUI(QMainWindow):
         self.setWindowIcon(QIcon('assests/icon.png'))
         self.screen_width = self.geometry().width()
         self.screen_height = self.geometry().height()
-        self.resize(self.screen_width, self.screen_height)
+        #self.resize(self.screen_width, self.screen_height)
+        self.resize(845, 407)
 
         fixedFont = QFontDatabase.systemFont(QFontDatabase.FixedFont)
         fixedFont.setPointSize(12)
@@ -129,13 +130,15 @@ class NotepadUI(QMainWindow):
 
         other_menu = self.menuBar().addMenu('&Other')
 
-        lock_action = self.__createAction(self, 'Lock', 'Lock', self.lock())
+        lock_action = self.__createAction(self, 'Lock', 'Lock', self.lock)
         lock_action.setShortcut(QKeySequence("Ctrl+L"))
 
         other_menu.addActions([lock_action])
 
     def NewFile(self):
-        pass
+        self.mainEditor.setPlainText('')
+        self.path = None
+        self.update_title()
 
     def OpenFile(self):
         path, _ = QFileDialog.getOpenFileName(
@@ -160,7 +163,6 @@ class NotepadUI(QMainWindow):
     def SaveFile(self):
         if self.path is None:
             self.SaveAsFile()
-            pass
         else:
             try:
                 text = self.mainEditor.toPlainText()
@@ -274,8 +276,8 @@ class NotepadUI(QMainWindow):
                 self.c.update()
 
     def lock(self):
-        self.userKey = "" #delete key
-        self.authWin = self.AuthPageUI()
+        #self.userKey = "" #delete key
+        #self.authWin = self.AuthPageUI()
         self.close()
 
  
