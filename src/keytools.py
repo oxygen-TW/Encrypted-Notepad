@@ -1,15 +1,17 @@
-from FileIO import BasicFileIO, EncryptedFlieIO
+from ConfigProcessor import Config
 
-class keytool(BasicFileIO):
+class keytool(Config):
     
     def __init__(self):
-        self.keypath = "app"
+        super().__init__()
+        self.c = self.load()
 
     def WriteKey(self, key):
-        self.save(key, self.keypath)
+        self.c["program"]["secretKey"] = key
+        self.update()
 
     def ReadKey(self):
-        return self.open(self.keypath)
+        return self.c["program"]["secretKey"]
 
 if __name__ == "__main__":
     k = keytool()

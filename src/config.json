@@ -1,1 +1,22 @@
-{"comment--1": "Config file. First Letter use lower case!", "main": {"version": "dev", "encryptedCoreVersion": "3.0-dev", "buildTime": "N/A", "Author": "Howard, Liu"}, "about": "", "program": {"encryptedMode": "AESCBC", "lastDir": "/home/oxygen/Desktop/Encrypted-Notepad/src/test"}, "UI": {"fontSize": 12}, "update": {"haveUpdate": 0, "updateUrl": ""}}
+{
+    "comment--1": "Config file. First Letter use lower case!",
+    "main": {
+        "version": "dev",
+        "encryptedCoreVersion": "3.0-dev",
+        "buildTime": "N/A",
+        "Author": "Howard, Liu"
+    },
+    "about": "About",
+    "program": {
+        "encryptedMode": "AESCBC",
+        "secretKey": "ODFkYzliZGI1MmQwNGRjMjAwMzZkYmQ4MzEzZWQwNTU=",
+        "lastDir": "/home/oxygen/Desktop/Encrypted-Notepad/src/test"
+    },
+    "UI": {
+        "fontSize": 12
+    },
+    "update": {
+        "haveUpdate": 0,
+        "updateUrl": ""
+    }
+}

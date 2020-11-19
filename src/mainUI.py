@@ -133,7 +133,9 @@ class NotepadUI(QMainWindow):
         lock_action = self.__createAction(self, 'Lock', 'Lock', self.lock)
         lock_action.setShortcut(QKeySequence("Ctrl+L"))
 
-        other_menu.addActions([lock_action])
+        about_action = self.__createAction(self, 'About', 'about', self.showAbout)
+
+        other_menu.addActions([lock_action, about_action])
 
     def NewFile(self):
         self.mainEditor.setPlainText('')
@@ -223,8 +225,12 @@ class NotepadUI(QMainWindow):
     def EncryptSave(self):
         if self.path is None:
             self.EncryptSaveAs()
-            pass
+
         else:
+            #確保使用者不會不小心加密到*.txt
+            if( os.path.splitext(self.path)[-1] != "ent"):
+                self.EncryptSaveAs()
+                
             try:
                 text = self.mainEditor.toPlainText()
                 self.efio.save(text, self.path, self.userKey)
@@ -279,6 +285,13 @@ class NotepadUI(QMainWindow):
         #self.userKey = "" #delete key
         #self.authWin = self.AuthPageUI()
         self.close()
+
+    def showAbout(self):
+        aboutText = self.c.config["about"]
+        dlg = QMessageBox(self)
+        dlg.setText(aboutText)
+        dlg.setIcon(QMessageBox.Information)
+        dlg.show()
 
  
 

@@ -1,5 +1,5 @@
 import sys, os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox, QAction
 from PyQt5.QtGui import  QKeySequence
 
 
@@ -15,7 +15,14 @@ class AuthPageUI(QMainWindow, Ui_AuthPageUI):
 
         self.setupUi(self)
         self.AuthButton.clicked.connect(self.Authentication)
-        self.AuthButton.setShortcut(QKeySequence("Return"))
+
+# connect(act2, SIGNAL(triggered(bool)), act1, SIGNAL(triggered(bool)));
+        act = QAction(self)
+        act.setShortcut(QKeySequence("Enter"))
+        act.triggered.connect(self.Authentication)
+        self.addAction(act)
+
+        self.AuthButton.clicked.connect(self.Authentication)
         self.ResetButton.clicked.connect(self.resetPassword)
 
     def Authentication(self):
