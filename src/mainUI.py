@@ -40,6 +40,9 @@ class NotepadUI(QMainWindow):
         #金鑰管理器
         self.kt = keytool()
 
+        #初始化標題
+        self.update_title()
+        
         #Create Layout
         mainLayout = QVBoxLayout()
 
@@ -166,6 +169,13 @@ class NotepadUI(QMainWindow):
         if self.path is None:
             self.SaveAsFile()
         else:
+            #確保使用者不會不小心加密成明文
+            print(os.path.splitext(self.path)[-1])
+            if(os.path.splitext(self.path)[-1] == ".ent"):
+                print(os.path.splitext(self.path)[-1])
+                self.EncryptSave()
+                return True
+
             try:
                 text = self.mainEditor.toPlainText()
                 self.fio.save(text, self.path)
@@ -228,7 +238,7 @@ class NotepadUI(QMainWindow):
 
         else:
             #確保使用者不會不小心加密到*.txt
-            if( os.path.splitext(self.path)[-1] != "ent"):
+            if( os.path.splitext(self.path)[-1] != ".ent"):
                 self.EncryptSaveAs()
                 
             try:
@@ -273,7 +283,8 @@ class NotepadUI(QMainWindow):
             try:    
                 text = self.efio.open(path, self.userKey)
             except Exception as e:
-                self.dialog_message(str(e))
+                self.dialog_message("解密失敗\n" + str(e))
+                self.mainEditor.setPlainText("解密失敗")
             else:
                 self.path = path
                 self.mainEditor.setPlainText(text)
