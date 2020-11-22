@@ -21,16 +21,9 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
-## Update v3.6.0
-
-1. Add counter.
-2. Start change code to OOP.
-
-## Dependence
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-- [Rework](https://github.com/Lukejkw/Rework)
-- [icon](https://www.flaticon.com/free-icon/notebook_2312113?term=lock%20notebook&page=1&position=16)
-
-## ToDo before final update
-- [ ] Add key tools for export and import.
-- [ ] Add Google Drive sync function.
+## Developer
+1. `pip install pipenv`
+2. `pipenv shell`
+3. `cd src`
+4. `pipenv install`
+5. `python EncryptedNotepad.py`
