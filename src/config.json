@@ -1,1 +1,23 @@
-{"comment--1": "Config file. First Letter use lower case!", "comment--2": "DO NOT EDIT!! if you aren't developer.", "main": {"version": "dev", "encryptedCoreVersion": "3.0-dev", "buildTime": "N/A", "Author": "Howard, Liu"}, "about": "About", "program": {"encryptedMode": "AESCBC", "secretKey": "ZI5UdjrInKbCM2H53wBKQhQUZJBO2rS9J+DySfHVMRrWx+8IAMNKzE65hwXZHZ3ovowCsRVh+hPP8TzIuGTiUQ==::ZjZjNTBmZjU3MjFkNWEwNQ==", "lastDir": "D:/Programming/Projects/Encrypted-Notepad/src/test"}, "UI": {"fontSize": 12}, "update": {"haveUpdate": 0, "updateUrl": ""}}
+{
+    "comment--1": "Config file. First Letter use lower case!",
+    "comment--2": "DO NOT EDIT!! if you aren't developer.",
+    "main": {
+        "version": "4.0-dev.1",
+        "encryptedCoreVersion": "3.0-dev",
+        "buildTime": "N/A",
+        "Author": "Howard, Liu"
+    },
+    "about": "\u52a0\u5bc6\u8a18\u4e8b\u672c\u5c08\u6848 Encrypted Notepad 2017-2020",
+    "program": {
+        "encryptedMode": "AESCBC",
+        "secretKey": "ukTzF1ekFqdJCETtjvhFDA==::ZTljMzZhZmQwNTFkOTg0OA==",
+        "lastDir": "test"
+    },
+    "UI": {
+        "fontSize": 12
+    },
+    "update": {
+        "haveUpdate": 0,
+        "updateUrl": ""
+    }
+}

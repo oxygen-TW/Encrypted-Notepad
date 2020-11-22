@@ -1,6 +1,6 @@
 import sys, os
 from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox, QAction, QLineEdit
-from PyQt5.QtGui import  QKeySequence
+from PyQt5.QtGui import  QKeySequence, QIcon
 
 
 from mainUI import NotepadUI
@@ -10,11 +10,18 @@ from EncryptedCore import convertPasspharse
 from keytools import keytool
 
 class AuthPageUI(QMainWindow, Ui_AuthPageUI):
-    def __init__(self):
+    def __init__(self, FileArgs):
         super(AuthPageUI, self).__init__()
 
         self.setupUi(self)
+        self.setWindowIcon(QIcon("icon.ico"))
 
+        # 檢查檔案參數是否存在
+        if not(os.path.isfile(FileArgs)) and FileArgs != "":
+            self.__dialog_message("Can not open file: " + FileArgs)
+            self.FileArgs = ""
+        else:
+            self.FileArgs = FileArgs
         #確認是否需要初始化金鑰
         kt = keytool()
         if(not(kt.checkKeyExist())):
@@ -69,7 +76,7 @@ class AuthPageUI(QMainWindow, Ui_AuthPageUI):
         return True
 
     def switchToMainPage(self, userInput):
-        self.mainPage = NotepadUI(userInput)
+        self.mainPage = NotepadUI(userInput, self.FileArgs)
         self.mainPage.show()
         self.close()
 

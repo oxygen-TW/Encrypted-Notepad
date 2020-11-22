@@ -373,7 +373,8 @@ dmypy.json
 cython_debug/
 
 # Private files
-開發進度.txt
 WapProjTemplate1
 Release/
 Test/
+test/
+Installer/

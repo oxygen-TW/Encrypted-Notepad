@@ -10,15 +10,16 @@ from PyQt5.QtPrintSupport import QPrintDialog
 from FileIO import *
 from ConfigProcessor import Config
 from keytools import keytool
+import authPage
 
 #Ref: https://learndataanalysis.org/build-a-notepad-application-from-scratch-using-python-and-pyqt5/
 class NotepadUI(QMainWindow):
-    def __init__(self, key):
+    def __init__(self, key, FileArgs):
         super().__init__()
         self.userKey = key
-
+        print(FileArgs)
         self.setWindowTitle("Encrypted Notepad")
-        self.setWindowIcon(QIcon('assests/icon.png'))
+        self.setWindowIcon(QIcon('icon.ico'))
         self.screen_width = self.geometry().width()
         self.screen_height = self.geometry().height()
         #self.resize(self.screen_width, self.screen_height)
@@ -42,7 +43,7 @@ class NotepadUI(QMainWindow):
 
         #初始化標題
         self.update_title()
-        
+
         #Create Layout
         mainLayout = QVBoxLayout()
 
@@ -60,6 +61,9 @@ class NotepadUI(QMainWindow):
 
         #Create File Menu
         file_menu = self.menuBar().addMenu("&File")
+
+        #拖放檔案功能
+        #self.dropped.connect(self.FileDropped)
 
         #Actions
         openFileAction = QAction("Open File", self)
@@ -131,6 +135,17 @@ class NotepadUI(QMainWindow):
  
         edit_menu.addActions([cut_action, copy_action, paste_action, select_all_action])
 
+        #工具選單
+        tools_menu = self.menuBar().addMenu("&Tools")
+
+        Zoomin_action = self.__createAction(self, "Zoom In", "Zoom In", self.mainEditor.zoomIn)
+        Zoomin_action.setShortcut(QKeySequence.ZoomIn)
+
+        Zoomout_action = self.__createAction(self, "Zoom Out", "Zoom Out", self.mainEditor.zoomOut)
+        Zoomout_action.setShortcut(QKeySequence.ZoomOut)         
+
+        tools_menu.addActions([Zoomin_action, Zoomout_action])
+        #其他選單
         other_menu = self.menuBar().addMenu('&Other')
 
         lock_action = self.__createAction(self, 'Lock', 'Lock', self.lock)
@@ -139,6 +154,32 @@ class NotepadUI(QMainWindow):
         about_action = self.__createAction(self, 'About', 'about', self.showAbout)
 
         other_menu.addActions([lock_action, about_action])
+
+        #開啟參數傳遞的檔案
+        if(FileArgs != "" and os.path.isfile(FileArgs)):
+            if(os.path.splitext(FileArgs)[-1] == ".ent"):
+                try:    
+                    text = self.efio.open(FileArgs, self.userKey)
+                except Exception as e:
+                    self.dialog_message("解密失敗\n" + str(e))
+                    self.mainEditor.setPlainText("解密失敗")
+                else:
+                    self.path = FileArgs
+                    self.mainEditor.setPlainText(text)
+                    self.update_title()
+                    self.c.config["program"]["lastDir"] = os.path.dirname(self.path)
+                    self.c.update()
+            else:
+                try:    
+                    text = self.fio.open(FileArgs)
+                except Exception as e:
+                    self.dialog_message(str(e))
+                else:
+                    self.path = FileArgs
+                    self.mainEditor.setPlainText(text)
+                    self.update_title()
+                    self.c.config["program"]["lastDir"] = os.path.dirname(self.path)
+                    self.c.update()
 
     def NewFile(self):
         self.mainEditor.setPlainText('')
@@ -219,7 +260,7 @@ class NotepadUI(QMainWindow):
         dlg.show()
 
     def update_title(self):
-        self.setWindowTitle('{0} - EncryptedNotepad'.format(os.path.basename(self.path) if self.path else 'Untitled'))
+        self.setWindowTitle('{0} - EncryptedNotepad | **DEV Version**'.format(os.path.basename(self.path) if self.path else 'Untitled'))
  
     def print_file(self):
         printDialog = QPrintDialog()
@@ -293,16 +334,20 @@ class NotepadUI(QMainWindow):
                 self.c.update()
 
     def lock(self):
-        #self.userKey = "" #delete key
-        #self.authWin = self.AuthPageUI()
+        self.userKey = "" #delete key
+        self.authWin = authPage.AuthPageUI("")
+        self.authWin.show()
         self.close()
 
     def showAbout(self):
-        aboutText = self.c.config["about"]
+        aboutText = self.c.config["about"] + "\n"
+        aboutText += "Version: " + self.c.config["main"]["version"] + "\n"
+        aboutText += "Build time: " + self.c.config["main"]["buildTime"]
         dlg = QMessageBox(self)
         dlg.setText(aboutText)
         dlg.setIcon(QMessageBox.Information)
         dlg.show()
 
- 
+    def FileDropped(self, file):
+        print(file)
 

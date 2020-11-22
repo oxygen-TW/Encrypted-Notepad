@@ -29,12 +29,12 @@ class EncryptedFlieIO(EncryptedCore):
 
 class BasicFileIO():
     def save(self, text, path):
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(text)
             f.close()
 
     def open(self, path):
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             text = f.read()
             f.close()
             return text

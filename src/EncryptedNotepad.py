@@ -5,6 +5,12 @@ import sys
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    notepad = AuthPageUI()
+
+    #處理參數傳遞檔案路徑
+    if(len(sys.argv) > 1):
+        notepad = AuthPageUI(sys.argv[1])
+    else:
+        notepad = AuthPageUI("")
+    
     notepad.show()
     sys.exit(app.exec_())
