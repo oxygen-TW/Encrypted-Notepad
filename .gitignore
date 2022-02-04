@@ -378,3 +378,4 @@ Release/
 Test/
 test/
 Installer/
+src/poetry.lock
