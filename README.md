@@ -22,8 +22,8 @@
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
 ## Developer
-1. `pip install pipenv`
-2. `pipenv shell`
+1. `pip install poetry`
+2. `poetry shell`
 3. `cd src`
-4. `pipenv install`
+4. `poetry install`
 5. `python EncryptedNotepad.py`

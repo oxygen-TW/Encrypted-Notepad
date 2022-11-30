@@ -379,3 +379,5 @@ Test/
 test/
 Installer/
 src/poetry.lock
+/.vscode
+src/.vscode/settings.json
