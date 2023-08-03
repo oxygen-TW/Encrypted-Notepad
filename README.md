@@ -41,5 +41,7 @@ options:
   -d                    Decrypt mode.
 ```
 ## Developer
+
 1. `conda install pyCryptodome PyQt`
 2. `python EncryptedNotepad.py`
+ad.py`
