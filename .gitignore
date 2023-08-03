@@ -378,6 +378,8 @@ Release/
 Test/
 test/
 Installer/
+.DS_Store
+src/setup.py
 src/poetry.lock
 /.vscode
 src/.vscode/settings.json
