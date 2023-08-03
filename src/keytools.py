@@ -22,8 +22,8 @@ class keytool(Config, EncryptedCore):
         
         return dkey
 
-    def UpdateUserPassword(self, userPassword):
-        self.WriteKey(self.c["program"]["secretKey"], userPassword)
+    def UpdateUserPassword(self, oriPassword, userPassword):
+        self.WriteKey(self.ReadKey(oriPassword), userPassword)
         
     def EncryptKey(self, key, userPassword):
         EntKey = self.AESCBCencrypt(key, userPassword)

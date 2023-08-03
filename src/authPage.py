@@ -68,7 +68,7 @@ class AuthPageUI(QMainWindow, Ui_AuthPageUI):
             self.__dialog_message("New password does not match")
             return False
 
-        kt.UpdateUserPassword(newPasswd)
+        kt.UpdateUserPassword(userpasswd, newPasswd)
         dlg = QMessageBox(self)
         dlg.setText("Reset password success!")
         dlg.setIcon(QMessageBox.Information)
