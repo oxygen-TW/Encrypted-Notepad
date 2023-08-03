@@ -378,3 +378,5 @@ Release/
 Test/
 test/
 Installer/
+.DS_Store
+src/setup.py

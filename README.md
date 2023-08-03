@@ -22,8 +22,5 @@
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
 ## Developer
-1. `pip install pipenv`
-2. `pipenv shell`
-3. `cd src`
-4. `pipenv install`
-5. `python EncryptedNotepad.py`
+1. `conda install pyCryptodome PyQt`
+2. `python EncryptedNotepad.py`
