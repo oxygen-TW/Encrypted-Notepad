@@ -3,3 +3,4 @@
 - [] Auto-save function
 - [] Main UI drag and drop event
 - [] NSIS File Association
+- [] Batch Process can not preserve origin file structure 

@@ -21,6 +21,25 @@
 ## Structure of Encryption core
 ![image](https://github.com/oxygen-TW/Encrypted-Notepad/blob/master/doc/img/Cross-Encryption-core-v2.0.png?raw=true)
 
+## Module tool
+
+### BatchProcessor(*Testing*)
+```                                   
+usage: batchProcessor.py [-h] -i INPUT -o OUTPUT -p PASSWORD [-e] [-d]
+
+Batch processor of EncryptedNotepad
+
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        The folder path you want to process.
+  -o OUTPUT, --output OUTPUT
+                        The destination folder path.
+  -p PASSWORD, --password PASSWORD
+                        Your user password.
+  -e                    Encrypt mode.
+  -d                    Decrypt mode.
+```
 ## Developer
 1. `conda install pyCryptodome PyQt`
 2. `python EncryptedNotepad.py`
