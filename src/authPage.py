@@ -52,7 +52,7 @@ class AuthPageUI(QMainWindow, Ui_AuthPageUI):
             return False
 
         print("ok")
-        self.switchToMainPage(userInput)
+        self.switchToMainPage(kt.ReadKey(userInput))
 
     def resetPassword(self):
         userpasswd = self.__showDialog("Reset password", "Input password")
